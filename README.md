@@ -42,8 +42,8 @@ A modern, responsive portfolio website built with React, Vite, and Tailwind CSS.
 1. Clone the repository
 
 ```bash
-git clone https://github.com/Rafiqdevhub/Portfolio.git
-cd Portfolio
+git https://github.com/Rafiqdevhub/Chatbot-Portfolio.git
+cd Chatbot-Portfolio
 ```
 
 2. Install dependencies
