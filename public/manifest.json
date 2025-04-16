@@ -1,0 +1,21 @@
+{
+  "name": "Muhammad Rafiq Portfolio",
+  "short_name": "Rafiq Dev",
+  "description": "Full Stack Developer Portfolio showcasing projects and skills in web development",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#32418c",
+  "theme_color": "#4158d0",
+  "icons": [
+    {
+      "src": "./src/Assets/images/Rafiq.PNG",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./src/Assets/images/Rafiq.PNG",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

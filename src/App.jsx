@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, lazy, Suspense } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -11,8 +11,10 @@ import Contact from "./pages/Contact";
 import Layout from "./pages/Layout";
 import ArchiveProjects from "./pages/ArchiveProjects";
 import NotFound from "./pages/NotFound";
-import Chatbot from "./components/Chatbot";
 import "./App.css";
+
+// Lazy load the Chatbot component
+const Chatbot = lazy(() => import("./components/Chatbot"));
 
 function ScrollToTopOnRouteChange() {
   const { pathname } = useLocation();
@@ -24,7 +26,6 @@ function ScrollToTopOnRouteChange() {
   return null;
 }
 
-// hello
 function App() {
   const [load, updateLoad] = useState(true);
 
@@ -37,7 +38,7 @@ function App() {
   }, []);
 
   return (
-    <div className="App ">
+    <div className="App">
       <Router>
         <Preloader load={load} />
         <div className="App" id={load ? "no-scroll" : "scroll"}>
@@ -49,7 +50,11 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/*" element={<NotFound />} />
           </Routes>
-          <Chatbot />
+          <Suspense
+            fallback={<div className="loading-chatbot">Loading...</div>}
+          >
+            <Chatbot />
+          </Suspense>
         </div>
       </Router>
     </div>
