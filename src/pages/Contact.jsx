@@ -91,7 +91,7 @@ const Contact = () => {
           💬
         </p>
         <p className="font-poppins mx-auto w-[90%] md:w-[70%] lg:w-[50%] pb-10 pt-4 text-center text-2xl tracking-wider text-[#e2e8f0] lg:text-3xl">
-          Get in Touch – Let's Connect
+          Get in Touch – Let&apos;s Connect
         </p>
       </div>
 
@@ -298,11 +298,11 @@ const Contact = () => {
           <div className="h-[320px] w-full rounded-lg bg-gradient-to-br from-[#4158d0] to-[#c850c0] flex items-center justify-center shadow-[0_8px_30px_rgb(0,0,0,0.2)] transition-all duration-300 hover:shadow-[0_8px_40px_rgb(0,0,0,0.3)]">
             <div className="text-center p-8 bg-gray-900 bg-opacity-20 backdrop-blur-sm rounded-lg w-[85%]">
               <h3 className="font-poppins text-2xl font-bold text-white mb-3">
-                Let's Build Something Amazing
+                Let&apos;s Build Something Amazing
               </h3>
               <p className="font-poppins text-sm text-[#e2e8f0] mb-4">
-                I'm always interested in new opportunities, collaborations, and
-                innovative projects.
+                I&apos;m always interested in new opportunities, collaborations,
+                and innovative projects.
               </p>
               <div className="flex flex-wrap justify-center gap-3 mt-4">
                 {UserData.socialMedia.slice(0, 3).map((platform, index) => (
@@ -348,10 +348,10 @@ const Contact = () => {
           </div>
           <div className="mt-6 text-center">
             <p className="font-poppins text-lg font-semibold text-[#e2e8f0] mb-2">
-              Let's work together!
+              Let&apos;s work together!
             </p>
             <p className="font-poppins text-sm text-[#94a3b8]">
-              I'm open to freelance opportunities, full-time positions, and
+              I&apos;m open to freelance opportunities, full-time positions, and
               creative collaborations.
             </p>
           </div>

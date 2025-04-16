@@ -1,10 +1,3 @@
-// filepath: d:\Development\Projects\AI Portfolio\src\utils\env.js
-/**
- * Get an environment variable with a fallback value
- * @param {string} key - The environment variable key
- * @param {string} fallback - Fallback value if the environment variable is not set
- * @returns {string} - The environment variable value or fallback
- */
 export const getEnv = (key, fallback = "") => {
   if (import.meta.env[key] === undefined && fallback === "") {
     console.warn(
@@ -14,11 +7,6 @@ export const getEnv = (key, fallback = "") => {
   return import.meta.env[key] || fallback;
 };
 
-/**
- * Check if all required environment variables are set
- * @param {string[]} required - Array of required environment variable keys
- * @returns {boolean} - Whether all required environment variables are set
- */
 export const validateEnv = (required = []) => {
   let valid = true;
 

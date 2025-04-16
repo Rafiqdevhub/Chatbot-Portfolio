@@ -1,4 +1,3 @@
-// filepath: d:\Development\Projects\AI Portfolio\src\utils\chatbotResponses.js
 /**
  * Generate contextual responses for the chatbot based on user input
  * @param {string} userMessage - The user's message in lowercase

@@ -144,7 +144,6 @@ function Chatbot() {
 
   return (
     <div className="fixed bottom-4 right-4 z-50">
-      {/* Chatbot button */}
       <button
         onClick={toggleChatbot}
         className="button-UI flex h-14 w-14 items-center justify-center rounded-full shadow-lg hover:opacity-90 transition-all duration-300"
@@ -157,7 +156,6 @@ function Chatbot() {
         )}
       </button>
 
-      {/* Chatbot window */}
       {isOpen && (
         <div className="absolute bottom-20 right-0 h-[400px] w-[300px] overflow-hidden rounded-lg shadow-[0_8px_30px_rgb(0,0,0,0.12)] sm:w-[350px] transition-all duration-300">
           {/* Header */}
@@ -173,7 +171,6 @@ function Chatbot() {
             </button>
           </div>
 
-          {/* Messages area */}
           <div
             className="flex h-[300px] flex-col overflow-y-auto bg-gray-900 bg-opacity-90 p-4"
             style={{ backdropFilter: "blur(15px)" }}
@@ -193,7 +190,6 @@ function Chatbot() {
               </div>
             ))}
 
-            {/* Typing indicator */}
             {isTyping && (
               <div className="mb-4 max-w-[80%] rounded-lg px-3 py-2 bg-gray-800 bg-opacity-80 text-[#e2e8f0]">
                 <div className="flex space-x-1">
@@ -210,11 +206,9 @@ function Chatbot() {
               </div>
             )}
 
-            {/* Empty div for scrolling to the end */}
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Input area */}
           <div className="flex h-[52px] items-center border-t border-gray-700 bg-gray-800 px-4">
             <input
               type="text"
