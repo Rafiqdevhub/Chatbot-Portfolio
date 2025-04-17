@@ -52,8 +52,8 @@ const Header = () => {
             <p
               className={
                 activeSection === "Home-section"
-                  ? "font-semibold text-[#e2e8f0]"
-                  : "text-[#94a3b8] hover:text-[#cbd5e1]"
+                  ? "font-semibold text-white"
+                  : "text-[#a3a3a3] hover:text-[#f0c14b]"
               }
             >
               Home
@@ -71,8 +71,8 @@ const Header = () => {
             <p
               className={
                 activeSection === "About-section"
-                  ? "font-semibold text-[#e2e8f0]"
-                  : "text-[#94a3b8] hover:text-[#cbd5e1]"
+                  ? "font-semibold text-white"
+                  : "text-[#a3a3a3] hover:text-[#f0c14b]"
               }
             >
               About
@@ -89,8 +89,8 @@ const Header = () => {
             <p
               className={
                 activeSection === "Project-section"
-                  ? "font-semibold text-[#e2e8f0]"
-                  : "text-[#94a3b8] hover:text-[#cbd5e1]"
+                  ? "font-semibold text-white"
+                  : "text-[#a3a3a3] hover:text-[#f0c14b]"
               }
             >
               Projects
@@ -107,8 +107,8 @@ const Header = () => {
             <p
               className={
                 activeSection === "Contact-section"
-                  ? "font-semibold text-[#e2e8f0]"
-                  : "text-[#94a3b8] hover:text-[#cbd5e1]"
+                  ? "font-semibold text-white"
+                  : "text-[#a3a3a3] hover:text-[#f0c14b]"
               }
             >
               Contact
@@ -119,7 +119,7 @@ const Header = () => {
               onClick={() => {
                 window.open(resumeUrl);
               }}
-              className="button-UI w-[120px] rounded-lg px-4 py-1.5 font-bold tracking-wider text-gray-900 shadow-xl transition-colors duration-300 hover:text-white"
+              className="button-UI w-[120px] rounded-lg px-4 py-1.5 font-bold tracking-wider text-[#0f0f1a] shadow-xl transition-colors duration-300 hover:text-white"
             >
               Resume
             </button>
@@ -129,7 +129,7 @@ const Header = () => {
 
       <div className="block w-full px-4 lg:hidden">
         <button
-          className="ml-auto block hover:text-gray-900 focus:outline-none"
+          className="ml-auto block text-[#f0c14b] hover:text-[#e57e31] focus:outline-none"
           onClick={toggleMobileMenu}
         >
           <CgMenuRight size={32} />
@@ -150,8 +150,8 @@ const Header = () => {
               <p
                 className={
                   activeSection === "Home-section"
-                    ? "font-semibold text-[#e2e8f0]"
-                    : "text-[#94a3b8] hover:text-[#cbd5e1]"
+                    ? "font-semibold text-white"
+                    : "text-[#a3a3a3] hover:text-[#f0c14b]"
                 }
                 onClick={toggleMobileMenu}
               >
@@ -169,8 +169,8 @@ const Header = () => {
               <p
                 className={
                   activeSection === "About-section"
-                    ? "font-semibold text-[#e2e8f0]"
-                    : "text-[#94a3b8] hover:text-[#cbd5e1]"
+                    ? "font-semibold text-white"
+                    : "text-[#a3a3a3] hover:text-[#f0c14b]"
                 }
                 onClick={toggleMobileMenu}
               >
@@ -188,8 +188,8 @@ const Header = () => {
               <p
                 className={
                   activeSection === "Project-section"
-                    ? "font-semibold text-[#e2e8f0]"
-                    : "text-[#94a3b8] hover:text-[#cbd5e1]"
+                    ? "font-semibold text-white"
+                    : "text-[#a3a3a3] hover:text-[#f0c14b]"
                 }
                 onClick={toggleMobileMenu}
               >
@@ -207,8 +207,8 @@ const Header = () => {
               <p
                 className={
                   activeSection === "Contact-section"
-                    ? "font-semibold text-[#e2e8f0]"
-                    : "text-[#94a3b8] hover:text-[#cbd5e1]"
+                    ? "font-semibold text-white"
+                    : "text-[#a3a3a3] hover:text-[#f0c14b]"
                 }
                 onClick={toggleMobileMenu}
               >
@@ -220,7 +220,7 @@ const Header = () => {
                 onClick={() => {
                   window.open(resumeUrl);
                 }}
-                className="button-UI w-[120px] rounded-lg px-4 py-1.5 font-bold tracking-wider text-gray-900 shadow-xl transition-colors duration-300 hover:text-white"
+                className="button-UI w-[120px] rounded-lg px-4 py-1.5 font-bold tracking-wider text-[#0f0f1a] shadow-xl transition-colors duration-300 hover:text-white"
               >
                 Resume
               </button>

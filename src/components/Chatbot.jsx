@@ -170,7 +170,7 @@ function Chatbot() {
           {/* Header */}
           <div className="navbar-bg flex h-12 items-center justify-between px-4">
             <p className="font-poppins text-sm font-semibold text-[#e2e8f0]">
-              Chat with {UserData.name}'s Assistant
+              Chat with {UserData.name}&#39;s Assistant
             </p>
             <div className="flex items-center space-x-3">
               <button

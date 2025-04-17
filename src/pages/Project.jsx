@@ -7,15 +7,15 @@ function Project() {
   return (
     <div className="mb-24 h-auto w-full sm:mb-0 md:h-screen">
       <div>
-        <p className="font-poppins mx-auto w-[50%] pb-10 pt-8 text-center text-2xl tracking-wider text-[#e2e8f0] lg:text-3xl">
-          Projects
+        <p className="font-poppins mx-auto w-[80%] pb-10 pt-8 text-center text-2xl tracking-wider text-white lg:text-3xl">
+          Featured <span className="text-[#f0c14b]">Projects</span>
         </p>
       </div>
       <div className="mx-auto mb-2 grid w-[90%] grid-cols-1 gap-4 sm:mb-8 md:grid-cols-2">
         <Cards />
       </div>
       <div className="mx-auto w-[90%]">
-        <p className="flex cursor-pointer items-center gap-2 font-semibold leading-tight text-[#e2e8f0]">
+        <p className="flex cursor-pointer items-center gap-2 font-semibold leading-tight text-white">
           <div
             className="font-poppins group relative"
             onClick={() => {
@@ -23,10 +23,10 @@ function Project() {
             }}
           >
             <span>View Full Project Archive</span>
-            <span className="absolute bottom-0 left-0 top-6 h-[2px] w-full bg-[#94a3b8] opacity-0 transition-opacity group-hover:opacity-100"></span>
+            <span className="absolute bottom-0 left-0 top-6 h-[2px] w-full bg-[#f0c14b] opacity-0 transition-opacity group-hover:opacity-100"></span>
           </div>
 
-          <FaLocationArrow />
+          <FaLocationArrow className="text-[#f0c14b]" />
         </p>
       </div>
     </div>

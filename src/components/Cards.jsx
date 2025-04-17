@@ -4,16 +4,30 @@ import { ProjectsList } from "../data/ProjectsList";
 // Memoized individual project card component
 const ProjectCard = memo(({ project, index, isExpanded, onToggle }) => {
   return (
-    <div className="mb-8 h-auto rounded-lg bg-transparent p-4 shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px] hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
-      <h2 className="font-poppins mb-2 cursor-pointer text-base font-semibold text-[#e2e8f0] lg:text-xl">
+    <div className="mb-8 h-auto rounded-lg bg-[#1a1a2e] p-4 shadow-lg hover:shadow-[0_8px_30px_rgba(240,193,75,0.15)] transition-shadow duration-300">
+      {/* Hot label for the first project to mimic casino "HOT" tags */}
+      {index === 0 && (
+        <div className="absolute top-2 right-2 bg-[#e74c3c] px-2 py-0.5 text-xs font-bold text-white uppercase rounded-sm">
+          Hot
+        </div>
+      )}
+
+      {/* New label for the second project */}
+      {index === 1 && (
+        <div className="absolute top-2 right-2 bg-[#3498db] px-2 py-0.5 text-xs font-bold text-white uppercase rounded-sm">
+          New
+        </div>
+      )}
+
+      <h2 className="font-poppins mb-2 cursor-pointer text-base font-semibold text-white lg:text-xl relative">
         {project.name}
       </h2>
-      <p className="font-poppins text-sm text-[#94a3b8]">
+      <p className="font-poppins text-sm text-[#a3a3a3]">
         {isExpanded
           ? project.description
           : project.description.substring(0, 120)}
         <span
-          className="ml-[5px] cursor-pointer text-[#94a3b8] hover:text-[#cbd5e1]"
+          className="ml-[5px] cursor-pointer text-[#f0c14b] hover:text-[#e57e31]"
           onClick={() => onToggle(index)}
           aria-label={isExpanded ? "Show less" : "Show more"}
         >
@@ -24,7 +38,7 @@ const ProjectCard = memo(({ project, index, isExpanded, onToggle }) => {
         {project.technologies.map((tech, techIndex) => (
           <p
             key={techIndex}
-            className="mb-2 mr-2 inline-block rounded-full bg-[#4158d0] bg-opacity-10 px-3 py-1 text-sm font-semibold text-[#e2e8f0] shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px] hover:bg-opacity-20"
+            className="mb-2 mr-2 inline-block rounded-full bg-[#1a1a2e] border border-[#f0c14b] px-3 py-1 text-sm font-semibold text-white shadow-sm hover:bg-[#2a2a4e] transition-colors duration-300"
           >
             {tech}
           </p>
