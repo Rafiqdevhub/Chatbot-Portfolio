@@ -1,13 +1,15 @@
 import { useState, useEffect, useMemo } from "react";
 import { UserData } from "../data/UserData";
-import Marquee from "react-fast-marquee";
 import { skillsData } from "../data/SkillsData";
 import { skillsImage } from "../utils/SkillsImage";
 import AboutImage from "../Assets/images/AboutImage.png";
+import { useNavigate } from "react-router-dom";
 
 function About() {
   const { about } = UserData;
   const [isLoaded, setIsLoaded] = useState(false);
+  const [activeTab, setActiveTab] = useState("frontend");
+  const navigate = useNavigate();
 
   // Define skill categories
   const skillCategories = {
@@ -52,208 +54,147 @@ function About() {
     [skillCategories]
   );
 
+  // Add animation classes for skills
+  const getAnimationDelay = (index) => {
+    return `${index * 0.1}s`;
+  };
+
   useEffect(() => {
     // Preload the about image
     const img = new Image();
     img.src = AboutImage;
     img.onload = () => setIsLoaded(true);
+
+    // Add scroll animation
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animate-fadeIn");
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    document.querySelectorAll(".animate-on-scroll").forEach((el) => {
+      observer.observe(el);
+    });
+
+    return () => observer.disconnect();
   }, []);
 
   return (
-    <div className="mb-8 h-auto w-full sm:mb-0">
-      <div className="mx-auto flex w-[90%] flex-col justify-between rounded-lg bg-[#1a1a2e] p-6 shadow-lg border border-[#1a1a2e] hover:border-[#f0c14b] transition-colors duration-500 md:flex-row md:items-start">
-        <div className="flex w-full flex-col md:w-[50%]">
-          <p className="pb-2 text-2xl font-semibold tracking-wide text-[#f0c14b]">
-            About Me
-          </p>
-          <p className="font-poppins text-sm text-[#a3a3a3] lg:text-base">
-            {about}
-          </p>
-
-          <div className="mt-6 p-4 bg-[#12122a] rounded-lg border-l-4 border-[#f0c14b]">
-            <p className="text-white font-bold mb-1">Full Stack Expertise</p>
-            <p className="text-[#a3a3a3] text-sm">
-              I specialize in end-to-end development, creating seamless
-              experiences from database design to user interface, with a focus
-              on performance and scalability.
+    <div className="mb-8 h-auto w-full sm:mb-0 space-y-8">
+      {/* Hero Section */}
+      <div className="mx-auto w-[90%] rounded-xl bg-gradient-to-br from-[#1a1a2e] to-[#12122a] p-8 shadow-2xl border border-[#1a1a2e] hover:border-[#f0c14b] transition-all duration-500">
+        <div className="flex flex-col md:flex-row md:items-center md:space-x-8">
+          <div className="flex-1 space-y-6">
+            <h1 className="text-4xl font-bold text-white mb-4">
+              <span className="text-[#f0c14b]">About</span> Me
+            </h1>
+            <p className="font-poppins text-lg leading-relaxed text-[#a3a3a3]">
+              {about}
             </p>
-          </div>
-        </div>
-
-        <div
-          className={`mt-6 transition-opacity duration-500 ${
-            isLoaded ? "opacity-100" : "opacity-0"
-          } md:w-[350px] lg:mt-0 md:pl-6`}
-        >
-          <div className="relative">
-            <div className="absolute -top-4 -left-4 bg-[#3498db] text-white text-xs font-bold py-1 px-3 rounded-sm z-10">
-              PROFESSIONAL
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+              <div className="p-4 bg-[#12122a]/50 rounded-lg border-l-4 border-[#f0c14b] hover:transform hover:scale-105 transition-all duration-300">
+                <p className="text-white font-bold mb-2">Full Stack Expert</p>
+                <p className="text-[#a3a3a3]">
+                  End-to-end development specialist
+                </p>
+              </div>
+              <div className="p-4 bg-[#12122a]/50 rounded-lg border-l-4 border-blue-500 hover:transform hover:scale-105 transition-all duration-300">
+                <p className="text-white font-bold mb-2">Problem Solver</p>
+                <p className="text-[#a3a3a3]">Creative solutions architect</p>
+              </div>
             </div>
-            <img
-              className="rounded-lg shadow-xl bg-cover bg-center bg-no-repeat h-full w-full object-cover border-2 border-[#f0c14b] p-1"
-              src={AboutImage}
-              alt="About Muhammad Rafiq"
-              loading="eager"
-              width="550"
-              height="350"
-            />
+          </div>
+          <div
+            className={`mt-6 md:mt-0 md:w-[400px] transition-all duration-700 ${
+              isLoaded
+                ? "opacity-100 translate-x-0"
+                : "opacity-0 translate-x-10"
+            }`}
+          >
+            <div className="relative group">
+              <div className="absolute -inset-1 bg-gradient-to-r from-[#f0c14b] to-[#3498db] rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
+              <div className="relative">
+                <div className="absolute -top-4 -left-4 bg-gradient-to-r from-[#3498db] to-[#2980b9] text-white text-xs font-bold py-2 px-4 rounded-full z-10 shadow-lg">
+                  PROFESSIONAL
+                </div>
+                <img
+                  className="rounded-lg shadow-2xl w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                  src={AboutImage}
+                  alt="About Muhammad Rafiq"
+                  loading="eager"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
       {/* Skills Section */}
-      <div className="mx-auto mt-8 w-[90%] rounded-lg bg-[#1a1a2e] p-6 shadow-lg">
-        <p className="text-xl font-semibold text-white mb-6">My Skill Stack</p>
+      <div className="mx-auto w-[90%] rounded-xl bg-gradient-to-br from-[#1a1a2e] to-[#12122a] p-8 shadow-2xl animate-on-scroll">
+        <h2 className="text-3xl font-bold text-white mb-8">
+          Technical <span className="text-[#f0c14b]">Expertise</span>
+        </h2>
 
-        {/* Frontend Skills */}
-        <div className="mb-8">
-          <p className="text-[#f0c14b] font-semibold mb-4 border-b border-[#2a2a4e] pb-2">
-            Frontend Development
-          </p>
-          <div className="flex flex-wrap gap-4">
-            {skills
-              .filter((skill) => skill.category === "frontend")
-              .map((skill) => (
-                <div
-                  className="flex flex-col items-center justify-center p-3 bg-[#12122a] rounded-lg hover:bg-[#2a2a4e] transition-colors duration-300 w-[80px]"
-                  key={skill.id}
-                >
-                  <img
-                    className="h-[40px] w-[40px] bg-contain bg-no-repeat mb-2"
-                    src={skill.image}
-                    alt={skill.name}
-                    loading="lazy"
-                  />
-                  <p className="text-[#a3a3a3] text-xs text-center">
-                    {skill.name}
-                  </p>
-                </div>
-              ))}
-          </div>
-        </div>
-
-        {/* Backend Skills */}
-        <div className="mb-8">
-          <p className="text-[#f0c14b] font-semibold mb-4 border-b border-[#2a2a4e] pb-2">
-            Backend Development
-          </p>
-          <div className="flex flex-wrap gap-4">
-            {skills
-              .filter((skill) => skill.category === "backend")
-              .map((skill) => (
-                <div
-                  className="flex flex-col items-center justify-center p-3 bg-[#12122a] rounded-lg hover:bg-[#2a2a4e] transition-colors duration-300 w-[80px]"
-                  key={skill.id}
-                >
-                  <img
-                    className="h-[40px] w-[40px] bg-contain bg-no-repeat mb-2"
-                    src={skill.image}
-                    alt={skill.name}
-                    loading="lazy"
-                  />
-                  <p className="text-[#a3a3a3] text-xs text-center">
-                    {skill.name}
-                  </p>
-                </div>
-              ))}
-          </div>
-        </div>
-
-        {/* Database Skills */}
-        <div className="mb-8">
-          <p className="text-[#f0c14b] font-semibold mb-4 border-b border-[#2a2a4e] pb-2">
-            Database & Storage
-          </p>
-          <div className="flex flex-wrap gap-4">
-            {skills
-              .filter((skill) => skill.category === "database")
-              .map((skill) => (
-                <div
-                  className="flex flex-col items-center justify-center p-3 bg-[#12122a] rounded-lg hover:bg-[#2a2a4e] transition-colors duration-300 w-[80px]"
-                  key={skill.id}
-                >
-                  <img
-                    className="h-[40px] w-[40px] bg-contain bg-no-repeat mb-2"
-                    src={skill.image}
-                    alt={skill.name}
-                    loading="lazy"
-                  />
-                  <p className="text-[#a3a3a3] text-xs text-center">
-                    {skill.name}
-                  </p>
-                </div>
-              ))}
-          </div>
-        </div>
-
-        {/* DevOps Skills */}
-        <div className="mb-8">
-          <p className="text-[#f0c14b] font-semibold mb-4 border-b border-[#2a2a4e] pb-2">
-            DevOps & Deployment
-          </p>
-          <div className="flex flex-wrap gap-4">
-            {skills
-              .filter((skill) => skill.category === "devOps")
-              .map((skill) => (
-                <div
-                  className="flex flex-col items-center justify-center p-3 bg-[#12122a] rounded-lg hover:bg-[#2a2a4e] transition-colors duration-300 w-[80px]"
-                  key={skill.id}
-                >
-                  <img
-                    className="h-[40px] w-[40px] bg-contain bg-no-repeat mb-2"
-                    src={skill.image}
-                    alt={skill.name}
-                    loading="lazy"
-                  />
-                  <p className="text-[#a3a3a3] text-xs text-center">
-                    {skill.name}
-                  </p>
-                </div>
-              ))}
-          </div>
-        </div>
-
-        {/* Tools Skills */}
-        <div className="mb-8">
-          <p className="text-[#f0c14b] font-semibold mb-4 border-b border-[#2a2a4e] pb-2">
-            Tools & Services
-          </p>
-          <div className="flex flex-wrap gap-4">
-            {skills
-              .filter((skill) => skill.category === "tools")
-              .map((skill) => (
-                <div
-                  className="flex flex-col items-center justify-center p-3 bg-[#12122a] rounded-lg hover:bg-[#2a2a4e] transition-colors duration-300 w-[80px]"
-                  key={skill.id}
-                >
-                  <img
-                    className="h-[40px] w-[40px] bg-contain bg-no-repeat mb-2"
-                    src={skill.image}
-                    alt={skill.name}
-                    loading="lazy"
-                  />
-                  <p className="text-[#a3a3a3] text-xs text-center">
-                    {skill.name}
-                  </p>
-                </div>
-              ))}
-          </div>
-        </div>
-
-        <div className="mt-10">
-          <p className="text-white text-center text-sm">
-            Always learning and exploring new technologies to stay at the
-            cutting edge of web development
-          </p>
-
-          <div className="flex justify-center mt-4">
-            <a
-              href="#contact"
-              className="px-6 py-3 rounded-lg font-bold text-white border border-[#f0c14b] shadow-xl transition-all duration-300 hover:bg-[#f0c14b] hover:bg-opacity-20"
+        {/* Skills Navigation */}
+        <div className="flex flex-wrap gap-4 mb-8">
+          {Object.keys(skillCategories).map((category) => (
+            <button
+              key={category}
+              onClick={() => setActiveTab(category)}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                activeTab === category
+                  ? "bg-[#f0c14b] text-[#1a1a2e]"
+                  : "bg-[#12122a] text-[#a3a3a3] hover:bg-[#f0c14b] hover:bg-opacity-20"
+              }`}
             >
-              Discuss Your Project
-            </a>
-          </div>
+              {category.charAt(0).toUpperCase() + category.slice(1)}
+            </button>
+          ))}
+        </div>
+
+        {/* Skills Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+          {skills
+            .filter((skill) => skill.category === activeTab)
+            .map((skill, index) => (
+              <div
+                key={skill.id}
+                className="group flex flex-col items-center justify-center p-4 bg-[#12122a]/50 rounded-lg hover:bg-[#2a2a4e] transition-all duration-500 hover:transform hover:scale-105"
+                style={{ animationDelay: getAnimationDelay(index) }}
+              >
+                <div className="relative w-16 h-16 mb-4">
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#f0c14b] to-[#3498db] rounded-full blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
+                  <div className="relative w-full h-full flex items-center justify-center">
+                    <img
+                      className="w-12 h-12 transition-transform duration-500 group-hover:scale-110"
+                      src={skill.image}
+                      alt={skill.name}
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+                <p className="text-[#a3a3a3] text-sm font-medium group-hover:text-white transition-colors duration-300">
+                  {skill.name}
+                </p>
+              </div>
+            ))}
+        </div>
+
+        <div className="mt-12 text-center">
+          <p className="text-white text-lg mb-6">
+            Exploring new technologies to push the boundaries of web development
+          </p>
+          <button
+            onClick={() => navigate("/projectlist")}
+            className="px-8 py-4 rounded-lg font-bold text-white bg-gradient-to-r from-[#f0c14b] to-[#3498db] hover:from-[#3498db] hover:to-[#f0c14b] transition-all duration-500 transform hover:scale-105 shadow-lg"
+          >
+            View My Projects
+          </button>
         </div>
       </div>
     </div>
