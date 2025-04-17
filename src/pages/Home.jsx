@@ -24,7 +24,7 @@ function Home() {
   };
 
   return (
-    <div className="mb-16 h-auto w-full sm:mb-0 md:h-screen">
+    <div className="mb-8 h-auto w-full sm:mb-0 md:h-screen">
       <div className="mx-auto mt-24 flex w-[90%] flex-col items-center sm:flex-row lg:mt-20 lg:w-[80%] lg:justify-between">
         <div className="w-full">
           <h2 className="text-2xl font-semibold leading-tight text-white lg:text-3xl">

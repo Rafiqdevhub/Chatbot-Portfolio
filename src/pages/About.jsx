@@ -60,7 +60,7 @@ function About() {
   }, []);
 
   return (
-    <div className="mb-16 h-auto w-full sm:mb-0">
+    <div className="mb-8 h-auto w-full sm:mb-0">
       <div className="mx-auto flex w-[90%] flex-col justify-between rounded-lg bg-[#1a1a2e] p-6 shadow-lg border border-[#1a1a2e] hover:border-[#f0c14b] transition-colors duration-500 md:flex-row md:items-start">
         <div className="flex w-full flex-col md:w-[50%]">
           <p className="pb-2 text-2xl font-semibold tracking-wide text-[#f0c14b]">
