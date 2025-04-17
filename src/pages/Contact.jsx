@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect } from "react";
 import { FaPaperPlane, FaArrowLeft } from "react-icons/fa";
-import { UserData } from "../data/UserData";
 import emailjs from "@emailjs/browser";
 import { getEnv, validateEnv } from "../utils/env";
 import { useNavigate } from "react-router-dom";
