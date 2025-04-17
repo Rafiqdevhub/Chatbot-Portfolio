@@ -2,6 +2,7 @@ import TypewriterText from "../components/TypewriterText";
 import { UserData } from "../data/UserData";
 import { AiFillGithub, AiFillInstagram } from "react-icons/ai";
 import { FaLinkedinIn } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import {
   FaSquareXTwitter,
   FaCode,
@@ -12,6 +13,7 @@ import {
 import imagedeveloper from "../Assets/images/imagedeveloper.png";
 
 function Home() {
+  const navigate = useNavigate();
   const socialMedia = UserData.socialMedia;
 
   const socialMediaIcons = {
@@ -29,7 +31,7 @@ function Home() {
             Welcome <span className="wave">👋</span>
           </h2>
           <h2 className="pt-2 text-2xl font-semibold leading-tight text-[#f0c14b]">
-            I'm {UserData.name}
+            I&apos;m {UserData.name}
           </h2>
           <TypewriterText />
 
@@ -49,19 +51,19 @@ function Home() {
           </div>
 
           <div className="mt-8 flex flex-wrap gap-4">
-            <a
-              href="/contact"
+            <button
+              onClick={() => navigate("/contact")}
               className="button-UI px-6 py-3 rounded-lg font-bold text-[#0f0f1a] shadow-xl transition-all duration-300 hover:opacity-90"
             >
               Hire Me
-            </a>
+            </button>
 
-            <a
-              href="/projectlist"
+            <button
+              onClick={() => navigate("/projectlist")}
               className="px-6 py-3 rounded-lg font-bold text-white border border-[#f0c14b] shadow-xl transition-all duration-300 hover:bg-[#f0c14b] hover:bg-opacity-20"
             >
               View Projects
-            </a>
+            </button>
           </div>
 
           <div className="mt-8 flex flex-wrap gap-6 text-[#a3a3a3]">
