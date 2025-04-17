@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useMemo, useCallback } from "react";
-import { FaRobot, FaTimes, FaPaperPlane } from "react-icons/fa";
+import { FaRobot, FaTimes, FaPaperPlane, FaTrash } from "react-icons/fa";
 import { UserData } from "../data/UserData";
 import { ProjectsList } from "../data/ProjectsList";
 import { generateContextualResponse } from "../utils/chatbotResponses";
@@ -142,6 +142,15 @@ function Chatbot() {
     [handleSend]
   );
 
+  const clearConversation = useCallback(() => {
+    setMessages([
+      {
+        text: `Hi there! I'm ${UserData.name}'s virtual assistant. How can I help you today?`,
+        sender: "bot",
+      },
+    ]);
+  }, []);
+
   return (
     <div className="fixed bottom-4 right-4 z-50">
       <button
@@ -163,12 +172,23 @@ function Chatbot() {
             <p className="font-poppins text-sm font-semibold text-[#e2e8f0]">
               Chat with {UserData.name}'s Assistant
             </p>
-            <button
-              onClick={toggleChatbot}
-              className="text-[#e2e8f0] hover:text-[#cbd5e1]"
-            >
-              <FaTimes />
-            </button>
+            <div className="flex items-center space-x-3">
+              <button
+                onClick={clearConversation}
+                className="text-[#e2e8f0] hover:text-[#cbd5e1]"
+                aria-label="Clear conversation"
+                title="Clear conversation"
+              >
+                <FaTrash className="text-sm" />
+              </button>
+              <button
+                onClick={toggleChatbot}
+                className="text-[#e2e8f0] hover:text-[#cbd5e1]"
+                aria-label="Close chatbot"
+              >
+                <FaTimes />
+              </button>
+            </div>
           </div>
 
           <div
