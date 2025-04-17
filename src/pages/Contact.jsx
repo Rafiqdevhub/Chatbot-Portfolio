@@ -87,18 +87,27 @@ const Contact = () => {
   };
 
   return (
-    <div className="mb-36 h-auto w-full sm:mb-24 md:h-screen">
+    <div className="mb-16 h-auto w-full sm:mb-8 md:h-screen">
       <div
-        onClick={() => navigate(-1)}
-        className="ml-[5%] hidden gap-2 pt-8 text-gray-200 hover:text-white lg:flex lg:items-center cursor-pointer"
+        onClick={() => {
+          navigate(-1);
+        }}
+        className="ml-[5%] hidden gap-2 pt-8 text-gray-200 hover:text-white lg:flex lg:items-center "
       >
         <FaArrowLeft />
-        <span>Back</span>
+        <span
+          className="cursor-pointer"
+          onClick={() => {
+            navigate(-1);
+          }}
+        >
+          Portfolio
+        </span>
       </div>
 
       <div className="text-center pb-2">
         <p className="text-3xl font-semibold text-[#f0c14b]">💬</p>
-        <p className="font-poppins mx-auto w-[90%] md:w-[70%] lg:w-[50%] pb-10 pt-4 text-center text-2xl tracking-wider text-white lg:text-3xl">
+        <p className="font-poppins mx-auto w-[90%] md:w-[70%] lg:w-[50%] pb-6 pt-4 text-center text-2xl tracking-wider text-white lg:text-3xl">
           Let&apos;s Work Together
         </p>
       </div>

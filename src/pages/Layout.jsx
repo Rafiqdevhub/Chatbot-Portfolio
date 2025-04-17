@@ -8,7 +8,7 @@ import { Element } from "react-scroll";
 
 function Layout() {
   return (
-    <>
+    <div className="space-y-8">
       <Header />
       <Element name="Home-section">
         <Home />
@@ -23,7 +23,7 @@ function Layout() {
         <Contact />
       </Element>
       <Footer />
-    </>
+    </div>
   );
 }
 

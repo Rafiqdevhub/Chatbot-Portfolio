@@ -60,7 +60,7 @@ function About() {
   }, []);
 
   return (
-    <div className="mb-24 h-auto w-full sm:mb-0">
+    <div className="mb-16 h-auto w-full sm:mb-0">
       <div className="mx-auto flex w-[90%] flex-col justify-between rounded-lg bg-[#1a1a2e] p-6 shadow-lg border border-[#1a1a2e] hover:border-[#f0c14b] transition-colors duration-500 md:flex-row md:items-start">
         <div className="flex w-full flex-col md:w-[50%]">
           <p className="pb-2 text-2xl font-semibold tracking-wide text-[#f0c14b]">
@@ -248,7 +248,7 @@ function About() {
 
           <div className="flex justify-center mt-4">
             <a
-              href="/contact"
+              href="#contact"
               className="px-6 py-3 rounded-lg font-bold text-white border border-[#f0c14b] shadow-xl transition-all duration-300 hover:bg-[#f0c14b] hover:bg-opacity-20"
             >
               Discuss Your Project

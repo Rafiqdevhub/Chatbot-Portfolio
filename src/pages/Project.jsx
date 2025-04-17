@@ -5,9 +5,9 @@ import { useNavigate } from "react-router-dom";
 function Project() {
   const navigate = useNavigate();
   return (
-    <div className="mb-24 h-auto w-full sm:mb-0 md:h-screen">
+    <div className="mb-16 h-auto w-full sm:mb-0 md:h-screen">
       <div>
-        <p className="font-poppins mx-auto w-[80%] pb-10 pt-8 text-center text-2xl tracking-wider text-white lg:text-3xl">
+        <p className="font-poppins mx-auto w-[80%] pb-6 pt-4 text-center text-2xl tracking-wider text-white lg:text-3xl">
           Featured <span className="text-[#f0c14b]">Projects</span>
         </p>
       </div>

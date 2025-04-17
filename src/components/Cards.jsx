@@ -5,20 +5,6 @@ import { ProjectsList } from "../data/ProjectsList";
 const ProjectCard = memo(({ project, index, isExpanded, onToggle }) => {
   return (
     <div className="mb-8 h-auto rounded-lg bg-[#1a1a2e] p-4 shadow-lg hover:shadow-[0_8px_30px_rgba(240,193,75,0.15)] transition-shadow duration-300">
-      {/* Hot label for the first project to mimic casino "HOT" tags */}
-      {index === 0 && (
-        <div className="absolute top-2 right-2 bg-[#e74c3c] px-2 py-0.5 text-xs font-bold text-white uppercase rounded-sm">
-          Hot
-        </div>
-      )}
-
-      {/* New label for the second project */}
-      {index === 1 && (
-        <div className="absolute top-2 right-2 bg-[#3498db] px-2 py-0.5 text-xs font-bold text-white uppercase rounded-sm">
-          New
-        </div>
-      )}
-
       <h2 className="font-poppins mb-2 cursor-pointer text-base font-semibold text-white lg:text-xl relative">
         {project.name}
       </h2>
