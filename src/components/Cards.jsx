@@ -1,19 +1,23 @@
 import { useState, useMemo, memo, useCallback } from "react";
+import PropTypes from "prop-types";
 import { ProjectsList } from "../data/ProjectsList";
+import { FaGithub } from "react-icons/fa";
 
 // Memoized individual project card component
 const ProjectCard = memo(({ project, index, isExpanded, onToggle }) => {
   return (
-    <div className="mb-8 h-auto rounded-lg bg-[#1a1a2e] p-4 shadow-lg hover:shadow-[0_8px_30px_rgba(240,193,75,0.15)] transition-shadow duration-300">
-      <h2 className="font-poppins mb-2 cursor-pointer text-base font-semibold text-white lg:text-xl relative">
-        {project.name}
-      </h2>
+    <div className="relative mb-8 h-auto rounded-lg bg-[#1a1a2e] p-4 shadow-md hover:shadow-[0_8px_30px_rgba(240,193,75,0.2)] transition-shadow duration-300">
+      <div className="flex items-center justify-between mb-2">
+        <h2 className="font-poppins text-base font-semibold text-white lg:text-xl">
+          {project.name}
+        </h2>
+      </div>
       <p className="font-poppins text-sm text-[#a3a3a3]">
         {isExpanded
           ? project.description
           : project.description.substring(0, 120)}
         <span
-          className="ml-[5px] cursor-pointer text-[#f0c14b] hover:text-[#e57e31]"
+          className="ml-[5px] cursor-pointer text-[#f0c14b] hover:text-[#e57e31] transition-colors duration-300"
           onClick={() => onToggle(index)}
           aria-label={isExpanded ? "Show less" : "Show more"}
         >
@@ -24,15 +28,46 @@ const ProjectCard = memo(({ project, index, isExpanded, onToggle }) => {
         {project.technologies.map((tech, techIndex) => (
           <p
             key={techIndex}
-            className="mb-2 mr-2 inline-block rounded-full bg-[#1a1a2e] border border-[#f0c14b] px-3 py-1 text-sm font-semibold text-white shadow-sm hover:bg-[#2a2a4e] transition-colors duration-300"
+            className="mb-2 mr-2 inline-block rounded-full bg-[#1a1a2e] border border-[#f0c14b] px-3 py-1 text-sm font-semibold text-white shadow-sm hover:bg-[#f0c14b] hover:text-[#1a1a2e] transition-colors duration-300"
           >
             {tech}
           </p>
         ))}
       </div>
+
+      {project.github && (
+        <div className="mt-4 text-sm text-[#a3a3a3]">
+          <div className="flex items-center justify-between px-4 py-2">
+            <span className="text-[#f0c14b]">Explore the code on GitHub</span>
+            <button
+              onClick={() =>
+                window.open(project.github, "_blank", "noopener,noreferrer")
+              }
+              className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#1a1a2e] hover:bg-[#f0c14b] hover:bg-opacity-20 text-[#f0c14b] hover:text-[#e57e31] transition-all duration-300 cursor-pointer border border-[#f0c14b] hover:border-[#e57e31] hover:scale-110"
+              title="View Source Code"
+              style={{ zIndex: 10 }}
+            >
+              <FaGithub size={20} />
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 });
+
+ProjectCard.propTypes = {
+  project: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    technologies: PropTypes.arrayOf(PropTypes.string).isRequired,
+    github: PropTypes.string,
+    link: PropTypes.string,
+  }).isRequired,
+  index: PropTypes.number.isRequired,
+  isExpanded: PropTypes.bool.isRequired,
+  onToggle: PropTypes.func.isRequired,
+};
 
 // Add display name for debugging purposes
 ProjectCard.displayName = "ProjectCard";

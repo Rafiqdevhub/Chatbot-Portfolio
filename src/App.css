@@ -24,17 +24,55 @@
   /* Slightly lighter dark blue for cards */
 }
 
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes shine {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(240, 193, 75, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(240, 193, 75, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(240, 193, 75, 0);
+  }
+}
+
 body {
   font-family: "Raleway", serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--bg-dark);
   background-image: linear-gradient(
-    180deg,
+    to bottom,
     #0f0f1a 0%,
-    #12122a 50%,
-    #1a1a2e 100%
+    #12122a 30%,
+    #1a1a2e 70%,
+    #2a2a4e 100%
   );
+  background-attachment: fixed;
+  background-size: 200% 200%;
+  animation: gradientShift 15s ease infinite;
+  min-height: 100vh;
 }
 
 html {
@@ -173,6 +211,55 @@ html {
 .Typewriter__cursor {
   font-size: 2.4em !important;
   color: var(--accent-gold) !important;
+}
+
+.App {
+  position: relative;
+}
+
+.App::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+      to bottom,
+      rgba(15, 15, 26, 0.2),
+      rgba(42, 42, 78, 0.2)
+    ),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise' x='0' y='0'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.4;
+}
+
+.send-button {
+  background-size: 200% auto;
+  animation: shine 3s linear infinite;
+  position: relative;
+}
+
+.send-button::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  z-index: -1;
+  background: linear-gradient(90deg, #f0c14b, #e57e31, #f0c14b);
+  background-size: 200% auto;
+  animation: shine 3s linear infinite;
+  border-radius: 0.5rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.send-button:not(:disabled):hover::after {
+  opacity: 1;
+}
+
+.send-button:not(:disabled) {
+  animation: pulse 2s infinite;
 }
 
 @media (max-width: 767px) {

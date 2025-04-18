@@ -1,33 +1,43 @@
 import Cards from "../components/Cards";
-import { FaLocationArrow } from "react-icons/fa";
+import { FaArrowRight } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 function Project() {
   const navigate = useNavigate();
-  return (
-    <div className="mb-16 h-auto w-full sm:mb-0 md:h-screen">
-      <div>
-        <p className="font-poppins mx-auto w-[80%] pb-6 pt-4 text-center text-2xl tracking-wider text-white lg:text-3xl">
-          Featured <span className="text-[#f0c14b]">Projects</span>
-        </p>
-      </div>
-      <div className="mx-auto mb-2 grid w-[90%] grid-cols-1 gap-4 sm:mb-8 md:grid-cols-2">
-        <Cards />
-      </div>
-      <div className="mx-auto w-[90%]">
-        <p className="flex cursor-pointer items-center gap-2 font-semibold leading-tight text-white">
-          <div
-            className="font-poppins group relative"
-            onClick={() => {
-              navigate("/projectlist");
-            }}
-          >
-            <span>View Full Project Archive</span>
-            <span className="absolute bottom-0 left-0 top-6 h-[2px] w-full bg-[#f0c14b] opacity-0 transition-opacity group-hover:opacity-100"></span>
-          </div>
 
-          <FaLocationArrow className="text-[#f0c14b]" />
-        </p>
+  return (
+    <div className="mb-16 h-auto w-full sm:mb-0 md:h-screen relative">
+      <div className="absolute inset-0 bg-gradient-to-b from-[#1a1a2e]/50 via-transparent to-transparent pointer-events-none"></div>
+
+      <div className="relative">
+        <div className="text-center space-y-6 mb-16">
+          <h1 className="font-poppins mx-auto w-[80%] text-4xl font-bold tracking-wider text-white lg:text-5xl">
+            Featured <span className="text-[#f0c14b]">Projects</span>
+          </h1>
+          <p className="text-[#a3a3a3] max-w-2xl mx-auto px-4">
+            Discover some of my recent work and innovative solutions. Each
+            project demonstrates my commitment to creating impactful digital
+            experiences.
+          </p>
+        </div>
+        <div className="mx-auto mb-12 w-[90%]">
+          <div className="grid grid-cols-1 gap-8 sm:mb-12 md:grid-cols-2 relative">
+            <div className="absolute -inset-1 bg-gradient-to-r from-[#42403b] to-[#49260b] rounded-lg opacity-20 blur-lg group-hover:opacity-30 transition duration-500"></div>
+
+            <Cards />
+          </div>
+        </div>
+        <div className="mx-auto w-[90%] mt-12">
+          <button
+            onClick={() => navigate("/projectlist")}
+            className="group flex items-center gap-3 mx-auto bg-gradient-to-r from-[#1a1a2e] to-[#2a2a4e] px-6 py-3 rounded-lg border border-[#f0c14b] hover:shadow-[0_8px_30px_rgba(240,193,75,0.15)] transition-all duration-300"
+          >
+            <span className="text-white font-semibold">
+              View Full Project Archive
+            </span>
+            <FaArrowRight className="text-[#f0c14b] group-hover:translate-x-1 transition-transform duration-300" />
+          </button>
+        </div>
       </div>
     </div>
   );

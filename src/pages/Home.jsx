@@ -40,11 +40,11 @@ function Home() {
               const IconComponent = socialMediaIcons[data.icon];
               return (
                 <button
-                  className="flex items-center justify-center rounded-full border border-[#f0c14b] p-2 bg-transparent hover:bg-[#f0c14b] hover:bg-opacity-20 transition-all duration-300"
+                  className="flex items-center justify-center rounded-full border border-[#f0c14b] p-2 bg-transparent hover:bg-[#f0c14b] hover:bg-opacity-10 hover:border-[#e57e31] transition-all duration-300"
                   key={index}
                   onClick={() => window.open(data.url)}
                 >
-                  <IconComponent className="icon text-[#f0c14b]" />
+                  <IconComponent className="icon text-[#f0c14b] hover:text-[#e57e31] transition-colors duration-300" />
                 </button>
               );
             })}
@@ -53,14 +53,14 @@ function Home() {
           <div className="mt-8 flex flex-wrap gap-4">
             <button
               onClick={() => navigate("/contact")}
-              className="button-UI px-6 py-3 rounded-lg font-bold text-[#0f0f1a] shadow-xl transition-all duration-300 hover:opacity-90"
+              className="button-UI px-6 py-3 rounded-lg font-bold text-[#0f0f1a] shadow-xl transition-all duration-300 hover:opacity-90 hover:shadow-[0_8px_30px_rgba(240,193,75,0.15)]"
             >
               Hire Me
             </button>
 
             <button
               onClick={() => navigate("/projectlist")}
-              className="px-6 py-3 rounded-lg font-bold text-white border border-[#f0c14b] shadow-xl transition-all duration-300 hover:bg-[#f0c14b] hover:bg-opacity-20"
+              className="px-6 py-3 rounded-lg font-bold text-white border border-[#f0c14b] shadow-xl transition-all duration-300 hover:bg-[#f0c14b] hover:bg-opacity-10 hover:border-[#e57e31]"
             >
               View Projects
             </button>

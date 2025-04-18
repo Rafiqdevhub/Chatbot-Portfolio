@@ -8,7 +8,7 @@ function NotFound() {
         Sorry, Page Not Found!
       </div>
       <p className="px-6 pb-6 text-center text-sm text-[#94a3b8] lg:w-2/4 lg:px-20 lg:pb-8 lg:text-base">
-        Sorry, we couldn’t find the page you’re looking for. Perhaps you’ve
+        Sorry, we couldn't find the page you're looking for. Perhaps you've
         mistyped the URL? Be sure to check your spelling.
       </p>
       <div className="">
@@ -16,7 +16,7 @@ function NotFound() {
           onClick={() => {
             navigate(-1);
           }}
-          className="h-[50px] w-[200px] border-2 border-[#94a3b8] bg-transparent text-[#e2e8f0] hover:bg-gray-900 hover:bg-opacity-40"
+          className="h-[50px] w-[200px] border-2 border-[#f0c14b] bg-transparent text-[#e2e8f0] hover:bg-[#f0c14b] hover:bg-opacity-20 hover:text-white transition-all duration-300"
         >
           Back
         </button>

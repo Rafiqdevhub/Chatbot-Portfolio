@@ -86,12 +86,12 @@ const Contact = () => {
   };
 
   return (
-    <div className="mb-16 h-auto w-full sm:mb-8 md:h-screen">
+    <div className="mb-24 h-auto w-full sm:mb-32 md:h-screen">
       <div
         onClick={() => {
           navigate(-1);
         }}
-        className="ml-[5%] hidden gap-2 pt-8 text-gray-200 hover:text-white lg:flex lg:items-center "
+        className="ml-[5%] hidden gap-2 pt-12 text-gray-200 hover:text-white lg:flex lg:items-center"
       >
         <FaArrowLeft />
         <span
@@ -104,14 +104,14 @@ const Contact = () => {
         </span>
       </div>
 
-      <div className="text-center pb-2">
-        <p className="text-3xl font-semibold text-[#f0c14b]">💬</p>
-        <p className="font-poppins mx-auto w-[90%] md:w-[70%] lg:w-[50%] pb-6 pt-4 text-center text-2xl tracking-wider text-white lg:text-3xl">
+      <div className="text-center pb-8 mt-8">
+        <p className="text-4xl font-semibold text-[#f0c14b] mb-4">💬</p>
+        <p className="font-poppins mx-auto w-[90%] md:w-[70%] lg:w-[50%] pt-4 text-center text-2xl tracking-wider text-white lg:text-3xl">
           Let&apos;s Work Together
         </p>
       </div>
 
-      <div className="mx-auto flex w-[90%] flex-col justify-between rounded-lg bg-[#1a1a2e] p-6 border border-[#f0c14b] shadow-[0_5px_15px_rgba(240,193,75,0.2)] md:flex-row md:items-center lg:w-[80%]">
+      <div className="mx-auto flex w-[90%] flex-col justify-between rounded-lg bg-[#1a1a2e] p-8 border border-[#2a2a4e] hover:border-[#543e07] hover:shadow-[0_8px_30px_rgba(240,193,75,0.15)] transition-all duration-500 transform hover:-translate-y-1 md:flex-row md:items-start lg:w-[80%] mt-4">
         <div className="w-full md:w-[45%]">
           <form ref={formRef} onSubmit={handleSubmit} className="space-y-5">
             <div>
@@ -242,7 +242,7 @@ const Contact = () => {
             <button
               type="submit"
               disabled={isSubmitting || envError}
-              className="button-UI flex h-12 w-full items-center justify-center gap-3 rounded-lg px-6 py-2 font-bold tracking-wider text-[#0f0f1a] shadow-xl transition-all duration-300 hover:opacity-90 hover:shadow-2xl disabled:opacity-70"
+              className="send-button button-UI flex h-12 w-full items-center justify-center gap-3 rounded-lg px-6 py-2 font-bold tracking-wider text-[#0f0f1a] shadow-xl transition-all duration-300 hover:opacity-90 hover:shadow-2xl disabled:opacity-70"
               aria-label="Send message"
             >
               {isSubmitting ? (
@@ -272,7 +272,7 @@ const Contact = () => {
               ) : (
                 <>
                   <span>Send Message</span>
-                  <FaPaperPlane className="text-lg" />
+                  <FaPaperPlane className="text-lg group-hover:translate-x-1 transition-transform duration-300" />
                 </>
               )}
             </button>

@@ -155,7 +155,7 @@ function Chatbot() {
     <div className="fixed bottom-4 right-4 z-50">
       <button
         onClick={toggleChatbot}
-        className="button-UI flex h-14 w-14 items-center justify-center rounded-full shadow-lg hover:opacity-90 transition-all duration-300"
+        className="button-UI flex h-14 w-14 items-center justify-center rounded-full shadow-lg hover:opacity-90 hover:shadow-[0_8px_30px_rgba(240,193,75,0.15)] transition-all duration-300"
         aria-label="Toggle chatbot"
       >
         {isOpen ? (
@@ -175,7 +175,7 @@ function Chatbot() {
             <div className="flex items-center space-x-3">
               <button
                 onClick={clearConversation}
-                className="text-[#e2e8f0] hover:text-[#cbd5e1]"
+                className="text-[#e2e8f0] hover:text-[#f0c14b] transition-colors duration-300"
                 aria-label="Clear conversation"
                 title="Clear conversation"
               >
@@ -183,7 +183,7 @@ function Chatbot() {
               </button>
               <button
                 onClick={toggleChatbot}
-                className="text-[#e2e8f0] hover:text-[#cbd5e1]"
+                className="text-[#e2e8f0] hover:text-[#f0c14b] transition-colors duration-300"
                 aria-label="Close chatbot"
               >
                 <FaTimes />
@@ -236,11 +236,11 @@ function Chatbot() {
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
               onKeyDown={handleKeyDown}
-              className="w-full rounded-lg bg-gray-700 bg-opacity-50 px-3 py-2 text-sm text-[#e2e8f0] placeholder-[#94a3b8] outline-none focus:ring-1 focus:ring-[#4158d0]"
+              className="w-full rounded-lg bg-gray-700 bg-opacity-50 px-3 py-2 text-sm text-[#e2e8f0] placeholder-[#94a3b8] outline-none focus:ring-1 focus:ring-[#f0c14b] transition-all duration-300"
             />
             <button
               onClick={handleSend}
-              className="ml-2 flex h-10 w-10 items-center justify-center rounded-lg bg-[#4158d0] bg-opacity-80 text-white hover:bg-opacity-100 transition-colors duration-300"
+              className="ml-2 flex h-10 w-10 items-center justify-center rounded-lg bg-[#f0c14b] text-white hover:bg-[#e57e31] transition-colors duration-300"
               disabled={inputText.trim() === ""}
             >
               <FaPaperPlane className="text-sm" />
