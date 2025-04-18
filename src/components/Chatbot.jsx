@@ -155,71 +155,71 @@ function Chatbot() {
     <div className="fixed bottom-4 right-4 z-50">
       <button
         onClick={toggleChatbot}
-        className="button-UI flex h-14 w-14 items-center justify-center rounded-full shadow-lg hover:opacity-90 hover:shadow-[0_8px_30px_rgba(240,193,75,0.15)] transition-all duration-300"
+        className="button-UI flex h-12 w-12 xs:h-14 xs:w-14 items-center justify-center rounded-full shadow-lg hover:opacity-90 hover:shadow-[0_8px_30px_rgba(240,193,75,0.15)] transition-all duration-300"
         aria-label="Toggle chatbot"
       >
         {isOpen ? (
-          <FaTimes className="text-white" />
+          <FaTimes className="text-white text-sm xs:text-base" />
         ) : (
-          <FaRobot className="text-white" />
+          <FaRobot className="text-white text-sm xs:text-base" />
         )}
       </button>
 
       {isOpen && (
-        <div className="absolute bottom-20 right-0 h-[400px] w-[300px] overflow-hidden rounded-lg shadow-[0_8px_30px_rgb(0,0,0,0.12)] sm:w-[350px] transition-all duration-300">
+        <div className="absolute bottom-16 xs:bottom-20 right-0 h-[350px] xs:h-[400px] w-[280px] xs:w-[300px] sm:w-[350px] overflow-hidden rounded-lg shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-all duration-300">
           {/* Header */}
-          <div className="navbar-bg flex h-12 items-center justify-between px-4">
-            <p className="font-poppins text-sm font-semibold text-[#e2e8f0]">
+          <div className="navbar-bg flex h-10 xs:h-12 items-center justify-between px-3 xs:px-4">
+            <p className="font-poppins text-xs xs:text-sm font-semibold text-[#e2e8f0] truncate">
               Chat with {UserData.name}&#39;s Assistant
             </p>
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center space-x-2 xs:space-x-3">
               <button
                 onClick={clearConversation}
                 className="text-[#e2e8f0] hover:text-[#f0c14b] transition-colors duration-300"
                 aria-label="Clear conversation"
                 title="Clear conversation"
               >
-                <FaTrash className="text-sm" />
+                <FaTrash className="text-xs xs:text-sm" />
               </button>
               <button
                 onClick={toggleChatbot}
                 className="text-[#e2e8f0] hover:text-[#f0c14b] transition-colors duration-300"
                 aria-label="Close chatbot"
               >
-                <FaTimes />
+                <FaTimes className="text-xs xs:text-sm" />
               </button>
             </div>
           </div>
 
           <div
-            className="flex h-[300px] flex-col overflow-y-auto bg-gray-900 bg-opacity-90 p-4"
+            className="flex h-[260px] xs:h-[300px] flex-col overflow-y-auto bg-gray-900 bg-opacity-90 p-3 xs:p-4"
             style={{ backdropFilter: "blur(15px)" }}
           >
             {messages.map((message, index) => (
               <div
                 key={index}
-                className={`mb-4 max-w-[80%] rounded-lg px-3 py-2 ${
+                className={`mb-3 xs:mb-4 max-w-[80%] rounded-lg px-2 xs:px-3 py-1.5 xs:py-2 ${
                   message.sender === "user"
                     ? "ml-auto bg-[#4158d0] bg-opacity-80 text-white"
                     : "bg-gray-800 bg-opacity-80 text-[#e2e8f0]"
                 }`}
               >
-                <p className="font-poppins text-sm whitespace-pre-line">
+                <p className="font-poppins text-xs xs:text-sm whitespace-pre-line">
                   {message.text}
                 </p>
               </div>
             ))}
 
             {isTyping && (
-              <div className="mb-4 max-w-[80%] rounded-lg px-3 py-2 bg-gray-800 bg-opacity-80 text-[#e2e8f0]">
+              <div className="mb-3 xs:mb-4 max-w-[80%] rounded-lg px-2 xs:px-3 py-1.5 xs:py-2 bg-gray-800 bg-opacity-80 text-[#e2e8f0]">
                 <div className="flex space-x-1">
-                  <div className="h-2 w-2 rounded-full bg-[#e2e8f0] animate-pulse"></div>
+                  <div className="h-1.5 w-1.5 xs:h-2 xs:w-2 rounded-full bg-[#e2e8f0] animate-pulse"></div>
                   <div
-                    className="h-2 w-2 rounded-full bg-[#e2e8f0] animate-pulse"
+                    className="h-1.5 w-1.5 xs:h-2 xs:w-2 rounded-full bg-[#e2e8f0] animate-pulse"
                     style={{ animationDelay: "0.2s" }}
                   ></div>
                   <div
-                    className="h-2 w-2 rounded-full bg-[#e2e8f0] animate-pulse"
+                    className="h-1.5 w-1.5 xs:h-2 xs:w-2 rounded-full bg-[#e2e8f0] animate-pulse"
                     style={{ animationDelay: "0.4s" }}
                   ></div>
                 </div>
@@ -229,21 +229,21 @@ function Chatbot() {
             <div ref={messagesEndRef} />
           </div>
 
-          <div className="flex h-[52px] items-center border-t border-gray-700 bg-gray-800 px-4">
+          <div className="flex h-[45px] xs:h-[52px] items-center border-t border-gray-700 bg-gray-800 px-3 xs:px-4">
             <input
               type="text"
               placeholder="Type a message..."
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
               onKeyDown={handleKeyDown}
-              className="w-full rounded-lg bg-gray-700 bg-opacity-50 px-3 py-2 text-sm text-[#e2e8f0] placeholder-[#94a3b8] outline-none focus:ring-1 focus:ring-[#f0c14b] transition-all duration-300"
+              className="w-full rounded-lg bg-gray-700 bg-opacity-50 px-2 xs:px-3 py-1.5 xs:py-2 text-xs xs:text-sm text-[#e2e8f0] placeholder-[#94a3b8] outline-none focus:ring-1 focus:ring-[#f0c14b] transition-all duration-300"
             />
             <button
               onClick={handleSend}
-              className="ml-2 flex h-10 w-10 items-center justify-center rounded-lg bg-[#f0c14b] text-white hover:bg-[#e57e31] transition-colors duration-300"
+              className="ml-2 flex h-8 w-8 xs:h-10 xs:w-10 items-center justify-center rounded-lg bg-[#f0c14b] text-white hover:bg-[#e57e31] transition-colors duration-300"
               disabled={inputText.trim() === ""}
             >
-              <FaPaperPlane className="text-sm" />
+              <FaPaperPlane className="text-xs xs:text-sm" />
             </button>
           </div>
         </div>

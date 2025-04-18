@@ -99,21 +99,21 @@ function Home() {
   );
 
   return (
-    <div className="mb-8 h-auto w-full sm:mb-0 md:h-screen">
-      <div className="mx-auto mt-24 flex w-[90%] flex-col items-center sm:flex-row lg:mt-20 lg:w-[80%] lg:justify-between">
+    <div className="mb-8 h-auto w-full sm:mb-0 min-h-[85vh] xs:min-h-[90vh] md:min-h-screen">
+      <div className="mx-auto mt-16 xs:mt-20 sm:mt-24 md:mt-28 flex w-[94%] sm:w-[90%] flex-col items-center sm:flex-row lg:mt-20 lg:w-[80%] lg:justify-between">
         <div className="w-full">
-          <h2 className="text-2xl font-semibold leading-tight text-white lg:text-3xl">
+          <h2 className="text-xl xs:text-2xl font-semibold leading-tight text-white lg:text-3xl">
             Welcome <span className="wave">👋</span>
           </h2>
-          <h2 className="pt-2 text-2xl font-semibold leading-tight text-[#f0c14b]">
+          <h2 className="pt-2 text-xl xs:text-2xl font-semibold leading-tight text-[#f0c14b]">
             I&apos;m {UserData.name}
           </h2>
 
-          <Suspense fallback={<div className="h-[50px]"></div>}>
+          <Suspense fallback={<div className="h-[30px] xs:h-[50px]"></div>}>
             <TypewriterText />
           </Suspense>
 
-          <div className="mt-8 flex gap-6">
+          <div className="mt-6 xs:mt-8 flex gap-4 xs:gap-6">
             {socialMedia.map((data, index) => (
               <SocialMediaButton
                 key={index}
@@ -123,23 +123,23 @@ function Home() {
             ))}
           </div>
 
-          <div className="mt-8 flex flex-wrap gap-4">
+          <div className="mt-6 xs:mt-8 flex flex-wrap gap-3 xs:gap-4">
             <button
               onClick={() => handleNavigate("/contact")}
-              className="button-UI px-6 py-3 rounded-lg font-bold text-[#0f0f1a] shadow-xl transition-all duration-300 hover:opacity-90 hover:shadow-[0_8px_30px_rgba(240,193,75,0.15)]"
+              className="button-UI px-4 xs:px-6 py-2 xs:py-3 rounded-lg font-bold text-[#0f0f1a] shadow-xl transition-all duration-300 hover:opacity-90 hover:shadow-[0_8px_30px_rgba(240,193,75,0.15)] text-sm xs:text-base"
             >
               Hire Me
             </button>
 
             <button
               onClick={() => handleNavigate("/projectlist")}
-              className="px-6 py-3 rounded-lg font-bold text-white border border-[#f0c14b] shadow-xl transition-all duration-300 hover:bg-[#f0c14b] hover:bg-opacity-10 hover:border-[#e57e31]"
+              className="px-4 xs:px-6 py-2 xs:py-3 rounded-lg font-bold text-white border border-[#f0c14b] shadow-xl transition-all duration-300 hover:bg-[#f0c14b] hover:bg-opacity-10 hover:border-[#e57e31] text-sm xs:text-base"
             >
               View Projects
             </button>
           </div>
 
-          <div className="mt-8 flex flex-wrap gap-6 text-[#a3a3a3]">
+          <div className="mt-6 xs:mt-8 flex flex-wrap gap-4 xs:gap-6 text-[#a3a3a3] text-xs xs:text-sm">
             {skillItems.map((item, index) => (
               <SkillItem key={index} icon={item.Icon} text={item.text} />
             ))}

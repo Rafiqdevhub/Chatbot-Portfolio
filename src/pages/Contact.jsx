@@ -86,12 +86,12 @@ const Contact = () => {
   };
 
   return (
-    <div className="mb-24 h-auto w-full sm:mb-32 md:h-screen">
+    <div className="mb-20 xs:mb-24 h-auto w-full sm:mb-32 md:h-screen">
       <div
         onClick={() => {
           navigate(-1);
         }}
-        className="ml-[5%] hidden gap-2 pt-12 text-gray-200 hover:text-white lg:flex lg:items-center"
+        className="ml-[5%] hidden gap-2 pt-8 xs:pt-12 text-gray-200 hover:text-white lg:flex lg:items-center"
       >
         <FaArrowLeft />
         <span
@@ -104,20 +104,26 @@ const Contact = () => {
         </span>
       </div>
 
-      <div className="text-center pb-8 mt-8">
-        <p className="text-4xl font-semibold text-[#f0c14b] mb-4">💬</p>
-        <p className="font-poppins mx-auto w-[90%] md:w-[70%] lg:w-[50%] pt-4 text-center text-2xl tracking-wider text-white lg:text-3xl">
+      <div className="text-center pb-6 xs:pb-8 mt-6 xs:mt-8">
+        <p className="text-3xl xs:text-4xl font-semibold text-[#f0c14b] mb-3 xs:mb-4">
+          💬
+        </p>
+        <p className="font-poppins mx-auto w-[90%] md:w-[70%] lg:w-[50%] pt-2 xs:pt-4 text-center text-xl xs:text-2xl tracking-wider text-white lg:text-3xl">
           Let&apos;s Work Together
         </p>
       </div>
 
-      <div className="mx-auto flex w-[90%] flex-col justify-between rounded-lg bg-[#1a1a2e] p-8 border border-[#2a2a4e] hover:border-[#543e07] hover:shadow-[0_8px_30px_rgba(240,193,75,0.15)] transition-all duration-500 transform hover:-translate-y-1 md:flex-row md:items-start lg:w-[80%] mt-4">
+      <div className="mx-auto flex w-[94%] xs:w-[90%] flex-col justify-between rounded-lg bg-[#1a1a2e] p-4 xs:p-6 sm:p-8 border border-[#2a2a4e] hover:border-[#543e07] hover:shadow-[0_8px_30px_rgba(240,193,75,0.15)] transition-all duration-500 transform hover:-translate-y-1 md:flex-row md:items-start lg:w-[80%] mt-4">
         <div className="w-full md:w-[45%]">
-          <form ref={formRef} onSubmit={handleSubmit} className="space-y-5">
+          <form
+            ref={formRef}
+            onSubmit={handleSubmit}
+            className="space-y-3 xs:space-y-5"
+          >
             <div>
               <label
                 htmlFor="name"
-                className="font-poppins mb-2 block text-sm font-medium text-white"
+                className="font-poppins mb-1 xs:mb-2 block text-xs xs:text-sm font-medium text-white"
               >
                 Full Name
               </label>
@@ -129,7 +135,7 @@ const Contact = () => {
                 onChange={handleChange}
                 required
                 placeholder="Enter your name"
-                className="font-poppins w-full rounded-lg bg-[#12122a] px-4 py-3 text-sm text-white placeholder-[#a3a3a3] outline-none border border-[#2a2a4e] focus:border-[#f0c14b] transition-all duration-300"
+                className="font-poppins w-full rounded-lg bg-[#12122a] px-3 xs:px-4 py-2 xs:py-3 text-xs xs:text-sm text-white placeholder-[#a3a3a3] outline-none border border-[#2a2a4e] focus:border-[#f0c14b] transition-all duration-300"
                 aria-label="Your full name"
               />
             </div>
@@ -137,7 +143,7 @@ const Contact = () => {
             <div>
               <label
                 htmlFor="email"
-                className="font-poppins mb-2 block text-sm font-medium text-white"
+                className="font-poppins mb-1 xs:mb-2 block text-xs xs:text-sm font-medium text-white"
               >
                 Email Address
               </label>
@@ -149,7 +155,7 @@ const Contact = () => {
                 onChange={handleChange}
                 required
                 placeholder="Enter your email"
-                className="font-poppins w-full rounded-lg bg-[#12122a] px-4 py-3 text-sm text-white placeholder-[#a3a3a3] outline-none border border-[#2a2a4e] focus:border-[#f0c14b] transition-all duration-300"
+                className="font-poppins w-full rounded-lg bg-[#12122a] px-3 xs:px-4 py-2 xs:py-3 text-xs xs:text-sm text-white placeholder-[#a3a3a3] outline-none border border-[#2a2a4e] focus:border-[#f0c14b] transition-all duration-300"
                 aria-label="Your email address"
               />
             </div>
@@ -157,7 +163,7 @@ const Contact = () => {
             <div>
               <label
                 htmlFor="message"
-                className="font-poppins mb-2 block text-sm font-medium text-white"
+                className="font-poppins mb-1 xs:mb-2 block text-xs xs:text-sm font-medium text-white"
               >
                 Your Message
               </label>
@@ -167,20 +173,20 @@ const Contact = () => {
                 value={formData.message}
                 onChange={handleChange}
                 required
-                rows="5"
+                rows="4"
                 placeholder="Tell me about your project"
-                className="font-poppins w-full rounded-lg bg-[#12122a] px-4 py-3 text-sm text-white placeholder-[#a3a3a3] outline-none border border-[#2a2a4e] focus:border-[#f0c14b] transition-all duration-300 resize-none"
+                className="font-poppins w-full rounded-lg bg-[#12122a] px-3 xs:px-4 py-2 xs:py-3 text-xs xs:text-sm text-white placeholder-[#a3a3a3] outline-none border border-[#2a2a4e] focus:border-[#f0c14b] transition-all duration-300 resize-none"
                 aria-label="Your message"
               ></textarea>
             </div>
 
             {submitStatus === "success" && (
               <div
-                className="font-poppins rounded-lg bg-green-500 bg-opacity-20 px-4 py-3 text-sm text-green-200 flex items-center"
+                className="font-poppins rounded-lg bg-green-500 bg-opacity-20 px-3 xs:px-4 py-2 xs:py-3 text-xs xs:text-sm text-green-200 flex items-center"
                 role="alert"
               >
                 <svg
-                  className="w-5 h-5 mr-2"
+                  className="w-4 h-4 mr-2"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
@@ -197,11 +203,11 @@ const Contact = () => {
 
             {submitStatus === "error" && (
               <div
-                className="font-poppins rounded-lg bg-red-500 bg-opacity-20 px-4 py-3 text-sm text-red-200 flex items-center"
+                className="font-poppins rounded-lg bg-red-500 bg-opacity-20 px-3 xs:px-4 py-2 xs:py-3 text-xs xs:text-sm text-red-200 flex items-center"
                 role="alert"
               >
                 <svg
-                  className="w-5 h-5 mr-2"
+                  className="w-4 h-4 mr-2"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
@@ -219,11 +225,11 @@ const Contact = () => {
 
             {envError && (
               <div
-                className="font-poppins rounded-lg bg-yellow-500 bg-opacity-20 px-4 py-3 text-sm text-yellow-200 flex items-center"
+                className="font-poppins rounded-lg bg-yellow-500 bg-opacity-20 px-3 xs:px-4 py-2 xs:py-3 text-xs xs:text-sm text-yellow-200 flex items-center"
                 role="alert"
               >
                 <svg
-                  className="w-5 h-5 mr-2"
+                  className="w-4 h-4 mr-2"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
@@ -242,13 +248,13 @@ const Contact = () => {
             <button
               type="submit"
               disabled={isSubmitting || envError}
-              className="send-button button-UI flex h-12 w-full items-center justify-center gap-3 rounded-lg px-6 py-2 font-bold tracking-wider text-[#0f0f1a] shadow-xl transition-all duration-300 hover:opacity-90 hover:shadow-2xl disabled:opacity-70"
+              className="send-button button-UI flex h-10 xs:h-12 w-full items-center justify-center gap-2 xs:gap-3 rounded-lg px-4 xs:px-6 py-1.5 xs:py-2 font-bold tracking-wider text-[#0f0f1a] shadow-xl transition-all duration-300 hover:opacity-90 hover:shadow-2xl disabled:opacity-70 text-xs xs:text-sm"
               aria-label="Send message"
             >
               {isSubmitting ? (
                 <span className="flex items-center">
                   <svg
-                    className="animate-spin -ml-1 mr-3 h-5 w-5 text-[#0f0f1a]"
+                    className="animate-spin -ml-1 mr-2 h-4 w-4 xs:h-5 xs:w-5 text-[#0f0f1a]"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
@@ -272,16 +278,16 @@ const Contact = () => {
               ) : (
                 <>
                   <span>Send Message</span>
-                  <FaPaperPlane className="text-lg group-hover:translate-x-1 transition-transform duration-300" />
+                  <FaPaperPlane className="text-sm xs:text-lg group-hover:translate-x-1 transition-transform duration-300" />
                 </>
               )}
             </button>
           </form>
 
-          <div className="mt-8 border-t border-[#2a2a4e] pt-5">
-            <p className="font-poppins mb-3 text-sm text-[#a3a3a3] flex items-center">
+          <div className="mt-6 xs:mt-8 border-t border-[#2a2a4e] pt-3 xs:pt-5">
+            <p className="font-poppins mb-2 xs:mb-3 text-xs xs:text-sm text-[#a3a3a3] flex items-center">
               <svg
-                className="w-4 h-4 mr-2 text-[#f0c14b]"
+                className="w-3 h-3 xs:w-4 xs:h-4 mr-1 xs:mr-2 text-[#f0c14b]"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -293,12 +299,12 @@ const Contact = () => {
             </p>
             <a
               href="mailto:rafkhan9323@gmail.com"
-              className="font-poppins flex items-center text-[#f0c14b] hover:text-[#e57e31] transition-colors duration-300"
+              className="font-poppins flex items-center text-[#f0c14b] hover:text-[#e57e31] transition-colors duration-300 text-xs xs:text-sm"
               aria-label="Email me"
             >
               rafkhan9323@gmail.com
               <svg
-                className="w-4 h-4 ml-2"
+                className="w-3 h-3 xs:w-4 xs:h-4 ml-1 xs:ml-2"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -311,46 +317,58 @@ const Contact = () => {
         </div>
 
         <div className="hidden md:block md:w-[50%] lg:w-[45%] md:pl-8">
-          <div className="h-[320px] w-full rounded-lg bg-gradient-to-br from-[#12122a] to-[#2a2a4e] flex items-center justify-center shadow-[0_8px_30px_rgb(0,0,0,0.2)] transition-all duration-300">
-            <div className="text-center p-8 bg-[#0f0f1a] bg-opacity-50 backdrop-blur-sm rounded-lg w-[85%]">
-              <h3 className="font-poppins text-2xl font-bold text-[#f0c14b] mb-3">
+          <div className="h-[280px] xs:h-[320px] w-full rounded-lg bg-gradient-to-br from-[#12122a] to-[#2a2a4e] flex items-center justify-center shadow-[0_8px_30px_rgb(0,0,0,0.2)] transition-all duration-300">
+            <div className="text-center p-6 xs:p-8 bg-[#0f0f1a] bg-opacity-50 backdrop-blur-sm rounded-lg w-[85%]">
+              <h3 className="font-poppins text-xl xs:text-2xl font-bold text-[#f0c14b] mb-2 xs:mb-3">
                 Development Services
               </h3>
-              <p className="font-poppins text-sm text-[#a3a3a3] mb-4">
+              <p className="font-poppins text-xs xs:text-sm text-[#a3a3a3] mb-3 xs:mb-4">
                 I offer a full range of web and mobile development services,
                 tailored to your specific needs and business goals.
               </p>
-              <div className="flex flex-wrap justify-center gap-3 mt-6">
-                <div className="bg-[#f0c14b] bg-opacity-20 hover:bg-opacity-30 p-3 rounded-lg transition-all duration-300 w-24">
-                  <div className="text-[#f0c14b] text-xl mb-1">Web Apps</div>
-                  <div className="text-white text-xs">Full Stack</div>
+              <div className="flex flex-wrap justify-center gap-2 xs:gap-3 mt-4 xs:mt-6">
+                <div className="bg-[#f0c14b] bg-opacity-20 hover:bg-opacity-30 p-2 xs:p-3 rounded-lg transition-all duration-300 w-[70px] xs:w-24">
+                  <div className="text-[#f0c14b] text-base xs:text-xl mb-0.5 xs:mb-1">
+                    Web Apps
+                  </div>
+                  <div className="text-white text-[10px] xs:text-xs">
+                    Full Stack
+                  </div>
                 </div>
-                <div className="bg-[#f0c14b] bg-opacity-20 hover:bg-opacity-30 p-3 rounded-lg transition-all duration-300 w-24">
-                  <div className="text-[#f0c14b] text-xl mb-1">API Dev</div>
-                  <div className="text-white text-xs">REST/GraphQL</div>
+                <div className="bg-[#f0c14b] bg-opacity-20 hover:bg-opacity-30 p-2 xs:p-3 rounded-lg transition-all duration-300 w-[70px] xs:w-24">
+                  <div className="text-[#f0c14b] text-base xs:text-xl mb-0.5 xs:mb-1">
+                    API Dev
+                  </div>
+                  <div className="text-white text-[10px] xs:text-xs">
+                    REST/GraphQL
+                  </div>
                 </div>
-                <div className="bg-[#f0c14b] bg-opacity-20 hover:bg-opacity-30 p-3 rounded-lg transition-all duration-300 w-24">
-                  <div className="text-[#f0c14b] text-xl mb-1">Mobile</div>
-                  <div className="text-white text-xs">Cross-Platform</div>
+                <div className="bg-[#f0c14b] bg-opacity-20 hover:bg-opacity-30 p-2 xs:p-3 rounded-lg transition-all duration-300 w-[70px] xs:w-24">
+                  <div className="text-[#f0c14b] text-base xs:text-xl mb-0.5 xs:mb-1">
+                    Mobile
+                  </div>
+                  <div className="text-white text-[10px] xs:text-xs">
+                    Cross-Platform
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="mt-6 text-center">
-            <p className="font-poppins text-lg font-semibold text-white mb-2">
+          <div className="mt-4 xs:mt-6 text-center">
+            <p className="font-poppins text-base xs:text-lg font-semibold text-white mb-2">
               Development Expertise
             </p>
             <div className="flex flex-wrap justify-center gap-2">
-              <div className="px-3 py-1 bg-[#12122a] rounded-lg text-[#a3a3a3] text-sm">
+              <div className="px-2 xs:px-3 py-1 bg-[#12122a] rounded-lg text-[#a3a3a3] text-xs xs:text-sm">
                 React
               </div>
-              <div className="px-3 py-1 bg-[#12122a] rounded-lg text-[#a3a3a3] text-sm">
+              <div className="px-2 xs:px-3 py-1 bg-[#12122a] rounded-lg text-[#a3a3a3] text-xs xs:text-sm">
                 Node.js
               </div>
-              <div className="px-3 py-1 bg-[#12122a] rounded-lg text-[#a3a3a3] text-sm">
+              <div className="px-2 xs:px-3 py-1 bg-[#12122a] rounded-lg text-[#a3a3a3] text-xs xs:text-sm">
                 Python
               </div>
-              <div className="px-3 py-1 bg-[#12122a] rounded-lg text-[#a3a3a3] text-sm">
+              <div className="px-2 xs:px-3 py-1 bg-[#12122a] rounded-lg text-[#a3a3a3] text-xs xs:text-sm">
                 MongoDB
               </div>
             </div>
