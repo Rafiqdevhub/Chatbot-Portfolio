@@ -8,12 +8,12 @@
   "theme_color": "#4158d0",
   "icons": [
     {
-      "src": "./src/Assets/images/RLogo.png",
+      "src": "/Rafiq.PNG",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "./src/Assets/images/RLogo.png",
+      "src": "/Rafiq.PNG",
       "sizes": "512x512",
       "type": "image/png"
     }
