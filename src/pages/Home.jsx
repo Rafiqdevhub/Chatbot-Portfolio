@@ -64,7 +64,7 @@ const ProfileImage = memo(() => {
       </div>
       <div className="w-full pb-[100%] relative overflow-hidden rounded-full border-4 border-[#1a1a2e] hover:border-[#f0c14b] transition-all duration-300 shadow-2xl bg-[#1a1a2e]">
         <img
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full  object-cover"
           src={RafiqImageSrc}
           alt="Developer profile"
           loading="lazy"
