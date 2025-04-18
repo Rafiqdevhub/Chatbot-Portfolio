@@ -11,6 +11,8 @@ import {
   FaSquareXTwitter,
 } from "react-icons/fa6";
 import { AiFillGithub, AiFillInstagram } from "react-icons/ai";
+// Import the image at the top level
+import RafiqImageSrc from "../Assets/images/RafiqImage.svg";
 
 // Lazy load components
 const TypewriterText = lazy(() => import("../components/TypewriterText"));
@@ -55,11 +57,6 @@ SkillItem.displayName = "SkillItem";
 
 // Memoize ProfileImage component
 const ProfileImage = memo(() => {
-  const imagedeveloper = useMemo(
-    () => import.meta.resolve("../Assets/images/RafiqImage.svg"),
-    []
-  );
-
   return (
     <div className="mt-16 sm:mt-20 lg:mt-12 relative max-w-[500px] w-full mx-auto">
       <div className="absolute -top-8 -right-8 bg-[#3498db] text-white font-bold text-lg p-4 rounded-full rotate-12 shadow-lg border-2 border-white hidden lg:block">
@@ -68,7 +65,7 @@ const ProfileImage = memo(() => {
       <div className="w-full pb-[100%] relative overflow-hidden rounded-full border-4 border-[#1a1a2e] hover:border-[#f0c14b] transition-all duration-300 shadow-2xl bg-[#1a1a2e]">
         <img
           className="absolute inset-0 w-full h-full object-cover"
-          src={imagedeveloper}
+          src={RafiqImageSrc}
           alt="Developer profile"
           loading="lazy"
           decoding="async"
