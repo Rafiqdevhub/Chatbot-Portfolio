@@ -1,3 +1,6 @@
+import { generateGeminiResponse } from "./geminiAI";
+import { UserData } from "../data/UserData";
+
 /**
  * Generate contextual responses for the chatbot based on user input
  * @param {string} userMessage - The user's message in lowercase
@@ -5,6 +8,26 @@
  * @returns {string} - The generated response
  */
 export const generateContextualResponse = (userMessage, portfolioContext) => {
+  // Check for social media link requests first
+  if (
+    /\b(?:social media|github|linkedin|twitter|instagram|connect|links|profiles|contact)\b/i.test(
+      userMessage
+    ) &&
+    /\b(?:share|give|links|url|profile|social media|handle|username|account)\b/i.test(
+      userMessage
+    )
+  ) {
+    return generateSocialMediaResponse();
+  }
+
+  // Check for resume request
+  if (
+    /\b(?:resume|cv)\b/i.test(userMessage) &&
+    /\b(?:link|url|download|access|view|see)\b/i.test(userMessage)
+  ) {
+    return `You can view or download ${portfolioContext.owner.name}'s resume at: ${UserData.resumeUrl}`;
+  }
+
   // Intent matching patterns with regular expressions
   const intents = [
     {
@@ -251,4 +274,52 @@ Feel free to reach out through the Contact form to discuss your specific project
 
   // Default response
   return `I'm here to help you learn more about ${portfolioContext.owner.name}'s skills, projects, and experience. Feel free to ask about specific technologies, projects, or professional background. You can also inquire about how to get in touch if you'd like to collaborate.`;
+};
+
+/**
+ * Generates a response with social media links
+ * @returns {string} - Response with social media links
+ */
+const generateSocialMediaResponse = () => {
+  const { socialMedia, name } = UserData;
+
+  let response = `Here are ${name}'s social media profiles where you can connect:\n\n`;
+
+  socialMedia.forEach((media) => {
+    response += `• ${
+      media.socialMediaName.charAt(0).toUpperCase() +
+      media.socialMediaName.slice(1)
+    }: ${media.url}\n`;
+  });
+
+  response += `\nFeel free to reach out through any of these platforms!`;
+  return response;
+};
+
+/**
+ * Process user message and generate response using Gemini AI or fallback to rule-based responses
+ * @param {string} userMessage - The user's message
+ * @param {object} portfolioContext - The portfolio context data
+ * @returns {Promise<string>} - The generated response
+ */
+export const processUserMessage = async (userMessage, portfolioContext) => {
+  try {
+    // Try generating a response with Gemini AI
+    const geminiResponse = await generateGeminiResponse(
+      userMessage,
+      portfolioContext
+    );
+
+    // If we got a valid response from Gemini, use it
+    if (geminiResponse && geminiResponse.length > 0) {
+      return geminiResponse;
+    }
+
+    // Fallback to rule-based responses if Gemini fails
+    return generateContextualResponse(userMessage, portfolioContext);
+  } catch (error) {
+    console.error("Error processing message with Gemini:", error);
+    // Fallback to rule-based responses
+    return generateContextualResponse(userMessage, portfolioContext);
+  }
 };
