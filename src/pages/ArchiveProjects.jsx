@@ -29,14 +29,14 @@ function ArchiveProjects() {
     <div className="min-h-screen w-full pb-8 xs:pb-12">
       <div
         onClick={() => navigate(-1)}
-        className="ml-[5%] flex gap-2 pt-6 xs:pt-8 text-gray-200 hover:text-[#c59629] transition-colors duration-300 items-center cursor-pointer"
+        className="ml-[5%] flex gap-2 pt-4 xs:pt-5 text-gray-200 hover:text-[#c59629] transition-colors duration-300 items-center cursor-pointer"
       >
         <FaArrowLeft className="text-xs xs:text-base" />
         <span className="text-sm xs:text-base">Portfolio</span>
       </div>
 
-      <div className="mx-auto w-[94%] xs:w-[90%] space-y-6 xs:space-y-8 pt-6 xs:pt-8">
-        <div className="text-center space-y-2">
+      <div className="mx-auto w-[94%] xs:w-[90%] space-y-4 xs:space-y-5 pt-3 xs:pt-4">
+        <div className="text-center space-y-1">
           <h1 className="font-poppins text-2xl xs:text-3xl font-bold text-white">
             Project <span className="text-[#f0c14b]">Archive</span>
           </h1>
