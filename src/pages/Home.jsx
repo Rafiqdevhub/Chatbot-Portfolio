@@ -58,13 +58,13 @@ SkillItem.displayName = "SkillItem";
 // Memoize ProfileImage component
 const ProfileImage = memo(() => {
   return (
-    <div className="mt-16 sm:mt-20 lg:mt-12 relative max-w-[500px] w-full mx-auto">
-      <div className="absolute -top-8 -right-8 bg-[#3498db] text-white font-bold text-lg p-4 rounded-full rotate-12 shadow-lg border-2 border-white hidden lg:block">
+    <div className="mt-4 xxs:mt-6 sm:mt-8 lg:mt-4 relative max-w-[320px] w-full mx-auto">
+      <div className="absolute -top-6 -right-6 bg-[#3498db] text-white font-bold text-sm p-3 rounded-full rotate-12 shadow-lg border-2 border-white hidden lg:block">
         Full Stack Dev
       </div>
       <div className="w-full pb-[100%] relative overflow-hidden rounded-full border-4 border-[#1a1a2e] hover:border-[#f0c14b] transition-all duration-300 shadow-2xl bg-[#1a1a2e]">
         <img
-          className="absolute inset-0 w-full  object-cover"
+          className="absolute inset-0 w-full h-full object-cover"
           src={RafiqImageSrc}
           alt="Developer profile"
           loading="lazy"
@@ -99,21 +99,23 @@ function Home() {
   );
 
   return (
-    <div className="mb-8 h-auto w-full sm:mb-0 min-h-[85vh] xs:min-h-[90vh] md:min-h-screen">
-      <div className="mx-auto mt-16 xs:mt-20 sm:mt-24 md:mt-28 flex w-[94%] sm:w-[90%] flex-col items-center sm:flex-row lg:mt-20 lg:w-[80%] lg:justify-between">
-        <div className="w-full">
-          <h2 className="text-xl xs:text-2xl font-semibold leading-tight text-white lg:text-3xl">
+    <div className="min-h-[60vh] xxs:min-h-[65vh] md:min-h-[75vh] w-full flex items-center pt-4 pb-0">
+      <div className="mx-auto mt-0 mb-0 xxs:mb-2 sm:mb-4 flex w-[94%] xxs:w-[92%] sm:w-[90%] flex-col items-center sm:flex-row lg:w-[85%] xl:w-[80%] lg:justify-between">
+        <div className="w-full max-w-content-md sm:max-w-lg">
+          <h2 className="text-lg xxs:text-xl xs:text-2xl font-semibold leading-tight text-white lg:text-2xl">
             Welcome <span className="wave">👋</span>
           </h2>
-          <h2 className="pt-2 text-xl xs:text-2xl font-semibold leading-tight text-[#f0c14b]">
+          <h2 className="pt-1 text-lg xxs:text-xl xs:text-2xl font-semibold leading-tight text-[#f0c14b]">
             I&apos;m {UserData.name}
           </h2>
 
-          <Suspense fallback={<div className="h-[30px] xs:h-[50px]"></div>}>
+          <Suspense
+            fallback={<div className="h-[24px] xxs:h-[30px] xs:h-[36px]"></div>}
+          >
             <TypewriterText />
           </Suspense>
 
-          <div className="mt-6 xs:mt-8 flex gap-4 xs:gap-6">
+          <div className="mt-3 xxs:mt-4 xs:mt-5 flex gap-3 xxs:gap-4">
             {socialMedia.map((data, index) => (
               <SocialMediaButton
                 key={index}
@@ -123,23 +125,23 @@ function Home() {
             ))}
           </div>
 
-          <div className="mt-6 xs:mt-8 flex flex-wrap gap-3 xs:gap-4">
+          <div className="mt-3 xxs:mt-4 xs:mt-5 flex flex-wrap gap-2 xs:gap-3">
             <button
               onClick={() => handleNavigate("/contact")}
-              className="button-UI px-4 xs:px-6 py-2 xs:py-3 rounded-lg font-bold text-[#0f0f1a] shadow-xl transition-all duration-300 hover:opacity-90 hover:shadow-[0_8px_30px_rgba(240,193,75,0.15)] text-sm xs:text-base"
+              className="button-UI px-3 xxs:px-4 xs:px-5 py-1.5 xs:py-2 rounded-lg font-bold text-[#0f0f1a] shadow-xl transition-all duration-300 hover:opacity-90 hover:shadow-[0_8px_30px_rgba(240,193,75,0.15)] text-xs xxs:text-sm"
             >
               Hire Me
             </button>
 
             <button
               onClick={() => handleNavigate("/projectlist")}
-              className="px-4 xs:px-6 py-2 xs:py-3 rounded-lg font-bold text-white border border-[#f0c14b] shadow-xl transition-all duration-300 hover:bg-[#f0c14b] hover:bg-opacity-10 hover:border-[#e57e31] text-sm xs:text-base"
+              className="px-3 xxs:px-4 xs:px-5 py-1.5 xs:py-2 rounded-lg font-bold text-white border border-[#f0c14b] shadow-xl transition-all duration-300 hover:bg-[#f0c14b] hover:bg-opacity-10 hover:border-[#e57e31] text-xs xxs:text-sm"
             >
               View Projects
             </button>
           </div>
 
-          <div className="mt-6 xs:mt-8 flex flex-wrap gap-4 xs:gap-6 text-[#a3a3a3] text-xs xs:text-sm">
+          <div className="mt-3 xxs:mt-4 xs:mt-5 flex flex-wrap gap-2 xxs:gap-3 text-[#a3a3a3] text-xs">
             {skillItems.map((item, index) => (
               <SkillItem key={index} icon={item.Icon} text={item.text} />
             ))}

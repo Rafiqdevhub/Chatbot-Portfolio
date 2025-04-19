@@ -8,18 +8,27 @@ import { Element } from "react-scroll";
 
 function Layout() {
   return (
-    <div className="space-y-8">
+    <div className="flex flex-col w-full">
       <Header />
-      <Element name="Home-section">
+      <Element name="Home-section" className="w-full">
         <Home />
       </Element>
-      <Element name="About-section">
+      <Element
+        name="About-section"
+        className="w-full mt-[-30px] xxs:mt-[-40px] xs:mt-[-50px] sm:mt-[-60px] md:mt-0"
+      >
         <About />
       </Element>
-      <Element name="Project-section">
+      <Element
+        name="Project-section"
+        className="w-full pt-2 xxs:pt-3 xs:pt-4 md:pt-8"
+      >
         <Project />
       </Element>
-      <Element name="Contact-section">
+      <Element
+        name="Contact-section"
+        className="w-full pt-2 xxs:pt-3 xs:pt-4 md:pt-8"
+      >
         <Contact />
       </Element>
       <Footer />

@@ -30,15 +30,32 @@ function App() {
   const [load, updateLoad] = useState(true);
 
   useEffect(() => {
+    // Reduced loading time for better user experience
     const timer = setTimeout(() => {
       updateLoad(false);
-    }, 1200);
+    }, 800);
 
-    return () => clearTimeout(timer);
+    // Add CSS fix for responsiveness
+    document.documentElement.style.setProperty(
+      "--app-height",
+      `${window.innerHeight}px`
+    );
+    const handleResize = () => {
+      document.documentElement.style.setProperty(
+        "--app-height",
+        `${window.innerHeight}px`
+      );
+    };
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   return (
-    <div className="App">
+    <div className="App overflow-x-hidden">
       <Router>
         <Preloader load={load} />
         <div className="App" id={load ? "no-scroll" : "scroll"}>
