@@ -27,12 +27,14 @@ const socialMediaIcons = {
 
 // Memoize SocialMediaButton component
 const SocialMediaButton = memo(({ icon: IconComponent, url }) => (
-  <button
+  <a
+    href={url}
+    target="_blank"
+    rel="noopener noreferrer"
     className="flex items-center justify-center rounded-full border border-[#f0c14b] p-2 bg-transparent hover:bg-[#f0c14b] hover:bg-opacity-10 hover:border-[#e57e31] transition-all duration-300"
-    onClick={() => window.open(url)}
   >
     <IconComponent className="icon text-[#f0c14b] hover:text-[#e57e31] transition-colors duration-300" />
-  </button>
+  </a>
 ));
 
 SocialMediaButton.propTypes = {

@@ -380,13 +380,15 @@ const Header = () => {
               onMouseEnter={() => setHoverItem("resume")}
               onMouseLeave={() => setHoverItem(null)}
             >
-              <button
-                onClick={() => {
-                  window.open(resumeUrl);
-                }}
+              <a
+                href={resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className={`button-UI w-[120px] rounded-lg px-4 py-1.5 font-bold tracking-wider text-[#0f0f1a] shadow-xl transition-all duration-300 
                   hover:opacity-90 hover:shadow-[0_8px_30px_rgba(240,193,75,0.3)]
-                  ${hoverItem === "resume" ? "animate-float" : ""}`}
+                  ${
+                    hoverItem === "resume" ? "animate-float" : ""
+                  } inline-block text-center`}
                 style={{
                   animation:
                     hoverItem === "resume"
@@ -396,7 +398,7 @@ const Header = () => {
                 }}
               >
                 Resume
-              </button>
+              </a>
             </div>
 
             {/* Scroll to Top Button in Desktop View (Inside Header) */}
@@ -533,18 +535,18 @@ const Header = () => {
               </p>
             </Link>
             <div className="transform transition-transform duration-300 hover:scale-105">
-              <button
-                onClick={() => {
-                  window.open(resumeUrl);
-                  toggleMobileMenu();
-                }}
-                className="button-UI w-[120px] rounded-lg px-4 py-1.5 font-bold tracking-wider text-[#0f0f1a] shadow-xl transition-all duration-300 hover:opacity-90 hover:shadow-[0_8px_30px_rgba(240,193,75,0.3)]"
+              <a
+                href={resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="button-UI w-[120px] rounded-lg px-4 py-1.5 font-bold tracking-wider text-[#0f0f1a] shadow-xl transition-all duration-300 hover:opacity-90 hover:shadow-[0_8px_30px_rgba(240,193,75,0.3)] inline-block text-center"
                 style={{
                   background: "linear-gradient(to right, #f0c14b, #e57e31)",
                 }}
+                onClick={toggleMobileMenu}
               >
                 Resume
-              </button>
+              </a>
             </div>
           </div>
         </nav>

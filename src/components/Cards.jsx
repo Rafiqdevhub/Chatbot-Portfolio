@@ -41,16 +41,16 @@ const ProjectCard = memo(({ project, index, isExpanded, onToggle }) => {
             <span className="text-[#f0c14b] text-xs xs:text-sm">
               Explore the code on GitHub
             </span>
-            <button
-              onClick={() =>
-                window.open(project.github, "_blank", "noopener,noreferrer")
-              }
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center w-8 h-8 xs:w-10 xs:h-10 rounded-full bg-[#1a1a2e] hover:bg-[#f0c14b] hover:bg-opacity-20 text-[#f0c14b] hover:text-[#e57e31] transition-all duration-300 cursor-pointer border border-[#f0c14b] hover:border-[#e57e31] hover:scale-110"
               title="View Source Code"
               style={{ zIndex: 10 }}
             >
               <FaGithub className="text-sm xs:text-base" />
-            </button>
+            </a>
           </div>
         </div>
       )}

@@ -333,7 +333,7 @@ const Contact = () => {
                     API Dev
                   </div>
                   <div className="text-white text-[8px] xxs:text-[10px] xs:text-xs">
-                    REST/GraphQL
+                    APIs
                   </div>
                 </div>
                 <div className="bg-[#f0c14b] bg-opacity-20 hover:bg-opacity-30 p-1.5 xxs:p-2 xs:p-3 rounded-lg transition-all duration-300 w-[60px] xxs:w-[65px] xs:w-[80px]">
