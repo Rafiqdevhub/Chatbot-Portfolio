@@ -3,7 +3,7 @@ import { FaRobot, FaTimes, FaPaperPlane, FaTrash } from "react-icons/fa";
 import { HiSparkles } from "react-icons/hi2";
 import { UserData } from "../data/UserData";
 import { ProjectsList } from "../data/ProjectsList";
-import { generateContextualResponse } from "../utils/chatbotResponses";
+import { processUserMessage } from "../utils/chatbotResponses";
 
 function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
@@ -120,7 +120,7 @@ function Chatbot() {
     setIsOpen(!isOpen);
   }, [isOpen]);
 
-  const handleSend = useCallback(() => {
+  const handleSend = useCallback(async () => {
     if (inputText.trim() === "") return;
 
     // Add user message
@@ -129,24 +129,41 @@ function Chatbot() {
       { text: inputText, sender: "user" },
     ]);
 
-    // Process the user's message and generate a response
-    const userMessage = inputText.toLowerCase();
-
-    // Clear input field
+    // Save the user message and clear input field
+    const userMessage = inputText;
     setInputText("");
 
     // Show typing indicator
     setIsTyping(true);
 
-    // Add bot response with a short delay for natural feel
-    setTimeout(() => {
-      const response = generateContextualResponse(
-        userMessage,
-        portfolioContext
-      );
-      setMessages((prev) => [...prev, { text: response, sender: "bot" }]);
+    // Process the message with AI and add the response with a delay for natural feel
+    try {
+      setTimeout(async () => {
+        try {
+          // Use our AI-powered message processor (with fallback mechanism)
+          const response = await processUserMessage(
+            userMessage,
+            portfolioContext
+          );
+
+          setMessages((prev) => [...prev, { text: response, sender: "bot" }]);
+        } catch (error) {
+          console.error("Error processing message:", error);
+          setMessages((prev) => [
+            ...prev,
+            {
+              text: "I'm having trouble processing your request right now. Please try again later.",
+              sender: "bot",
+            },
+          ]);
+        } finally {
+          setIsTyping(false);
+        }
+      }, 1200);
+    } catch (error) {
+      console.error("Error in handleSend:", error);
       setIsTyping(false);
-    }, 1200);
+    }
   }, [inputText, portfolioContext]);
 
   const handleKeyDown = useCallback(
@@ -213,7 +230,7 @@ function Chatbot() {
             <div className="flex items-center">
               <FaRobot className="text-white mr-2 text-sm xs:text-base" />
               <p className="font-poppins text-sm xs:text-base font-semibold text-white truncate">
-                {UserData.name}&#39;s Assistant
+                {UserData.name}&#39;s AI Assistant
               </p>
             </div>
             <div className="flex items-center space-x-2 xs:space-x-3">
